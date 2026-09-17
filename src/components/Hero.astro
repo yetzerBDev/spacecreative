@@ -1,0 +1,378 @@
+---
+import { Icon } from 'astro-icon/components';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import logoUrl from '../../logo.png';
+
+const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero%20cotizar%20un%20proyecto';
+
+const navLinks = [
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#portafolio', label: 'Portafolio' },
+  { href: '#contacto', label: 'Contacto' },
+];
+---
+
+<header class="hero-frame">
+	<div class="hero-sky" id="inicio">
+		<div class="clouds clouds-back" aria-hidden="true"></div>
+		<div class="clouds clouds-front" aria-hidden="true"></div>
+
+		<nav class="nav" aria-label="Navegación principal">
+			<a class="nav-logo" href="#inicio" title="Space Creative" aria-label="Space Creative, ir al inicio">
+				<img class="logo" src={logoUrl.src} alt="Logo de Space Creative" width="139" height="52" />
+			</a>
+
+			<ul class="nav-links">
+				{
+					navLinks.map((link) => (
+						<li>
+							<a href={link.href}>{link.label}</a>
+						</li>
+					))
+				}
+			</ul>
+
+			<a class="btn btn-nav" href={waLink} target="_blank" rel="noopener noreferrer">
+				<WhatsAppIcon size={16} />
+				<span>Cotizar por WhatsApp</span>
+			</a>
+		</nav>
+
+		<div class="hero-content">
+			<h1 class="hero-title hero-animate">
+				Impulsamos tu negocio en el mundo digital con desarrollo web y soluciones a la medida
+			</h1>
+
+			<p class="hero-sub hero-animate">
+				Diseñamos sitios web profesionales, sistemas eficientes y estrategias de redes sociales que atraen clientes reales para tu empresa en Honduras y la región.
+			</p>
+
+			<div class="hero-actions hero-animate">
+				<a class="btn btn-primary" href={waLink} target="_blank" rel="noopener noreferrer">
+					<WhatsAppIcon size={20} />
+					<span>Cotiza tu proyecto</span>
+				</a>
+				<a class="btn btn-ghost" href="#servicios">
+					<span>Ver nuestros servicios</span>
+					<Icon name="hugeicons:chevron-down" width="16" height="16" aria-hidden="true" />
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+<style>
+	.hero-frame {
+		padding: 12px;
+		background: #ffffff;
+	}
+
+	@media (min-width: 640px) {
+		.hero-frame {
+			padding: 20px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.hero-frame {
+			padding: 24px;
+		}
+	}
+
+	.hero-sky {
+		position: relative;
+		border-radius: var(--radius-card);
+		border: 1px solid rgba(191, 219, 254, 0.4);
+		overflow: hidden;
+		box-shadow: 0 25px 50px -25px rgba(11, 37, 69, 0.55);
+		background: radial-gradient(circle at 50% 18%, #0090e3 0%, #007ac9 45%, #0b2545 88%, #001026 100%);
+		min-height: calc(100dvh - 48px);
+		display: flex;
+		flex-direction: column;
+	}
+
+	@media (min-width: 640px) {
+		.hero-sky {
+			min-height: calc(100dvh - 64px);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.hero-sky {
+			min-height: calc(100dvh - 72px);
+		}
+	}
+
+	.clouds {
+		position: absolute;
+		inset: -6% -10%;
+		pointer-events: none;
+		background-repeat: no-repeat;
+		will-change: transform;
+		background-image:
+			radial-gradient(ellipse 60% 40% at 50% 96%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.72) 40%, rgba(255, 255, 255, 0) 75%),
+			radial-gradient(ellipse 35% 25% at 15% 82%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 70%),
+			radial-gradient(ellipse 40% 30% at 85% 78%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%),
+			radial-gradient(ellipse 70% 35% at 50% 68%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 80%);
+	}
+
+	.clouds-back {
+		opacity: 0.75;
+		animation: cloudDrift 90s linear infinite alternate;
+	}
+
+	.clouds-front {
+		animation: cloudDrift 55s linear infinite alternate-reverse;
+	}
+
+	@keyframes cloudDrift {
+		from {
+			transform: translate3d(-2.5%, 0.5%, 0);
+		}
+		to {
+			transform: translate3d(2.5%, -0.5%, 0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.clouds {
+			animation: none !important;
+		}
+	}
+
+	.nav {
+		position: relative;
+		z-index: var(--z-nav);
+		max-width: 80rem;
+		margin: 0 auto;
+		width: 100%;
+		padding: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+	}
+
+	@media (min-width: 640px) {
+		.nav {
+			padding: 20px 32px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.nav {
+			padding: 16px 48px;
+		}
+	}
+
+	.nav-logo {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+	}
+
+	.logo {
+		height: 48px;
+		width: auto;
+		display: block;
+		object-fit: contain;
+		transition: transform 160ms var(--ease-out);
+	}
+
+	@media (min-width: 640px) {
+		.logo {
+			height: 58px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.logo {
+			height: 68px;
+		}
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.nav-logo:hover .logo {
+			transform: scale(1.04);
+		}
+	}
+
+	.nav-links {
+		display: none;
+		list-style: none;
+		align-items: center;
+		gap: 28px;
+	}
+
+	@media (min-width: 1024px) {
+		.nav-links {
+			display: flex;
+		}
+	}
+
+	.nav-links a {
+		font-family: var(--font-display);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.85);
+		text-decoration: none;
+		transition: color 160ms ease;
+	}
+
+	.nav-links a:hover {
+		color: #ffffff;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		border-radius: var(--radius-pill);
+		font-family: var(--font-display);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		text-decoration: none;
+		color: #ffffff;
+		cursor: pointer;
+		user-select: none;
+		transition: transform 160ms var(--ease-out), background-color 160ms ease, border-color 160ms ease;
+	}
+
+	.btn:active {
+		transform: scale(0.97);
+	}
+
+	.btn:focus-visible {
+		outline: 3px solid rgba(255, 255, 255, 0.6);
+		outline-offset: 3px;
+	}
+
+	.btn-nav {
+		font-size: 0.75rem;
+		padding: 10px 18px;
+		background: var(--clr-wa);
+		border: 1px solid rgba(255, 255, 255, 0.35);
+		gap: 8px;
+	}
+
+	.btn-nav:hover {
+		background: var(--clr-wa-hover);
+	}
+
+	@media (max-width: 639px) {
+		.btn-nav {
+			padding: 10px 14px;
+		}
+
+		.btn-nav [data-icon] + span {
+			display: none;
+		}
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: var(--z-content);
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		max-width: 88rem;
+		width: 100%;
+		margin: 0 auto;
+		padding: 64px 16px 96px;
+	}
+
+	@media (min-width: 640px) {
+		.hero-content {
+			padding: 96px 24px 128px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.hero-content {
+			padding: 112px 32px 144px;
+		}
+	}
+
+	.hero-title {
+		max-width: 100%;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(1.875rem, 3.8vw, 3.4rem);
+		line-height: 1.12;
+		letter-spacing: -0.03em;
+		color: #ffffff;
+		text-shadow: 0 2px 12px rgba(0, 16, 38, 0.35);
+	}
+
+	.hero-sub {
+		max-width: 36rem;
+		margin-top: 20px;
+		font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+		line-height: 1.65;
+		color: #e6f4ff;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		margin-top: 32px;
+	}
+
+	@media (min-width: 640px) {
+		.hero-actions {
+			margin-top: 40px;
+			gap: 20px;
+		}
+	}
+
+	.btn-primary {
+		font-size: 0.8125rem;
+		padding: 14px 28px;
+		background: var(--clr-wa);
+		box-shadow: 0 12px 24px -8px rgba(16, 96, 60, 0.55);
+	}
+
+	.btn-primary:hover {
+		background: var(--clr-wa-hover);
+		transform: translateY(-1px);
+	}
+
+	.btn-ghost {
+		font-size: 0.8125rem;
+		font-weight: 600;
+		padding: 14px 28px;
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+	}
+
+	.btn-ghost:hover {
+		background: rgba(255, 255, 255, 0.2);
+	}
+
+	.hero-animate {
+		opacity: 0;
+		animation: heroFadeUp 600ms var(--ease-out) forwards;
+	}
+
+	.hero-title.hero-animate {
+		animation-delay: 80ms;
+	}
+
+	.hero-sub.hero-animate {
+		animation-delay: 140ms;
+	}
+
+	.hero-actions.hero-animate {
+		animation-delay: 200ms;
+	}
+</style>

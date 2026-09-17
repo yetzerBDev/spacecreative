@@ -1,0 +1,248 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const steps = [
+	{
+		marker: '01',
+		title: 'Definición y alcance',
+		copy: 'Escuchamos cómo funciona tu negocio, qué necesitas resolver y qué no. De ahí sale una propuesta concreta.',
+		result: 'Alcance, presupuesto y fechas por escrito.',
+	},
+	{
+		marker: '02',
+		title: 'Prototipo por hitos',
+		copy: 'Diseñamos y construimos por etapas. Ves el avance en pantalla antes de la versión final y apruebas cada paso.',
+		result: 'Prototipo navegable aprobado por ti.',
+	},
+	{
+		marker: '03',
+		title: 'Lanzamiento y soporte',
+		copy: 'Publicamos, dejamos listo el dominio, el correo y el certificado de seguridad, y capacitamos a tu equipo.',
+		result: 'Sitio en línea y equipo capacitado para usarlo.',
+	},
+];
+---
+
+<section class="process" id="proceso">
+	<div class="process-inner">
+		<header class="process-head">
+			<h2 class="process-title">Claridad, hitos y cero sorpresas</h2>
+			<p class="process-lede">
+				Trabajamos por etapas, con pagos ligados a cada entrega, para que siempre tengas el control de tu inversión.
+			</p>
+		</header>
+
+		<ol class="steps">
+			{
+				steps.map((step) => (
+					<li class="step">
+						<span class="marker" aria-hidden="true">{step.marker}</span>
+						<h3 class="step-title">{step.title}</h3>
+						<p class="step-copy">{step.copy}</p>
+						<p class="step-result">
+							<Icon name="hugeicons:checkmark-circle-02" size={16} class="result-icon" aria-hidden="true" />
+							<span>{step.result}</span>
+						</p>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.process {
+		position: relative;
+		overflow: hidden;
+		padding: 80px 0;
+		background: var(--clr-abyss);
+	}
+
+	@media (min-width: 640px) {
+		.process {
+			padding: 112px 0;
+		}
+	}
+
+	.process::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background:
+			radial-gradient(42% 42% at 100% 0%, rgba(0, 162, 253, 0.14), transparent 70%),
+			radial-gradient(38% 38% at 0% 100%, rgba(0, 162, 253, 0.08), transparent 70%);
+	}
+
+	.process-inner {
+		position: relative;
+		z-index: var(--z-content);
+		max-width: 80rem;
+		margin: 0 auto;
+		padding: 0 16px;
+	}
+
+	@media (min-width: 640px) {
+		.process-inner {
+			padding: 0 24px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.process-inner {
+			padding: 0 32px;
+		}
+	}
+
+	.process-head {
+		max-width: 42rem;
+		margin: 0 auto 48px;
+		text-align: center;
+	}
+
+	@media (min-width: 640px) {
+		.process-head {
+			margin-bottom: 64px;
+		}
+	}
+
+	.process-title {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(1.875rem, 1.2rem + 2.4vw, 2.75rem);
+		line-height: 1.14;
+		letter-spacing: -0.02em;
+		color: #ffffff;
+	}
+
+	.process-lede {
+		margin: 16px auto 0;
+		max-width: 40rem;
+		font-size: clamp(0.875rem, 0.82rem + 0.2vw, 1rem);
+		line-height: 1.7;
+		color: #c3d5ea;
+	}
+
+	.steps {
+		list-style: none;
+		display: grid;
+		gap: 36px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.step {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		padding-left: 64px;
+	}
+
+	.step::after {
+		content: '';
+		position: absolute;
+		left: 21px;
+		top: 50px;
+		bottom: -36px;
+		width: 1px;
+		background: linear-gradient(180deg, rgba(0, 162, 253, 0.45), rgba(147, 197, 253, 0.12));
+	}
+
+	.step:last-child::after {
+		display: none;
+	}
+
+	.marker {
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		border-radius: var(--radius-pill);
+		border: 1px solid rgba(0, 162, 253, 0.45);
+		background: linear-gradient(160deg, #0c2c50 0%, #001026 100%);
+		box-shadow: 0 0 0 6px rgba(0, 162, 253, 0.05);
+		color: #bfe0ff;
+		font-family: var(--font-display);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+	}
+
+	.step-title {
+		padding-top: 8px;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
+		line-height: 1.25;
+		letter-spacing: -0.01em;
+		color: #ffffff;
+	}
+
+	.step-copy {
+		margin-top: 12px;
+		font-size: 0.875rem;
+		line-height: 1.7;
+		color: #b9cee6;
+	}
+
+	.step-result {
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
+		margin-top: auto;
+		padding-top: 18px;
+		border-top: 1px solid rgba(147, 197, 253, 0.14);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		line-height: 1.5;
+		color: #e6f0fb;
+	}
+
+	.step-copy + .step-result {
+		margin-top: 22px;
+	}
+
+	.result-icon {
+		flex: 0 0 auto;
+		margin-top: 2px;
+		color: #7cc6ff;
+	}
+
+	@media (min-width: 900px) {
+		.steps {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 44px;
+		}
+
+		.step {
+			padding-left: 0;
+			padding-top: 72px;
+		}
+
+		.step::after {
+			left: 46px;
+			right: -44px;
+			top: 21px;
+			bottom: auto;
+			width: auto;
+			height: 1px;
+			background: linear-gradient(90deg, rgba(0, 162, 253, 0.45), rgba(147, 197, 253, 0.12));
+		}
+
+		.step-title {
+			padding-top: 0;
+		}
+
+		.step-result {
+			margin-top: auto;
+		}
+
+		.step-copy + .step-result {
+			margin-top: auto;
+		}
+	}
+</style>

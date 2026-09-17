@@ -1,0 +1,130 @@
+---
+import { getImage } from 'astro:assets';
+import Hero from '../components/Hero.astro';
+import Clients from '../components/Clients.astro';
+import AboutBento from '../components/AboutBento.astro';
+import Services from '../components/Services.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Process from '../components/Process.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import faviconSource from '../../logo_pestaña.png';
+
+const favicon = await getImage({ src: faviconSource, width: 64, format: 'png' });
+const appleIcon = await getImage({ src: faviconSource, width: 180, format: 'png' });
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Space Creative</title>
+
+		<link rel="icon" type="image/png" href={favicon.src} />
+		<link rel="apple-touch-icon" href={appleIcon.src} />
+		<meta name="theme-color" content="#001026" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=TikTok+Sans:wght@500;600;700;800&family=Geist:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<Hero />
+		<Clients />
+		<AboutBento />
+		<Services />
+		<Portfolio />
+		<Process />
+		<Contact />
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--clr-cerulean: #00a2fd;
+		--clr-cerulean-ink: #0068a8;
+		--clr-deep: #0b2545;
+		--clr-deep-soft: #0e3057;
+		--clr-abyss: #001026;
+
+		--clr-wa: #1a7f50;
+		--clr-wa-hover: #146b42;
+		--clr-wa-ring: rgba(26, 127, 80, 0.45);
+
+		--clr-body: #475569;
+		--clr-heading: #0b2545;
+		--clr-surface-light: #fafbff;
+		--clr-surface-alt: #f2f3ff;
+		--clr-slate: #6b7280;
+		--clr-line: rgba(203, 213, 225, 0.7);
+
+		--font-display: 'TikTok Sans', system-ui, sans-serif;
+		--font-body: 'Geist', system-ui, sans-serif;
+
+		--radius-card: 40px;
+		--radius-panel: 24px;
+		--radius-inner: 16px;
+		--radius-pill: 9999px;
+
+		--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+		--z-deco: 0;
+		--z-content: 10;
+		--z-nav: 50;
+	}
+
+	*,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body {
+		font-family: var(--font-body);
+		color: var(--clr-heading);
+		background: #ffffff;
+		overflow-x: hidden;
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+
+	::selection {
+		background: var(--clr-cerulean);
+		color: #ffffff;
+	}
+
+	@keyframes heroFadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(14px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-animate,
+		.hero-animate * {
+			animation: none !important;
+			transition: none !important;
+		}
+	}
+</style>

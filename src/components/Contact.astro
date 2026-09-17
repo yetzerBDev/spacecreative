@@ -1,0 +1,353 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const waNumber = '50493828622';
+
+const projectTypes = [
+	'Desarrollo Web (sitio corporativo o landing)',
+	'Desarrollo Móvil (app iOS / Android)',
+	'Sistema empresarial / Backend',
+	'Manejo de redes sociales y estrategia digital',
+	'Solución integral a la medida',
+];
+---
+
+<section class="contact" id="contacto">
+	<div class="clouds" aria-hidden="true"></div>
+
+	<div class="contact-inner">
+		<p class="contact-kicker">Cotiza tu proyecto hoy</p>
+		<h2 class="contact-title">Hagamos realidad tu próximo gran hito digital</h2>
+		<p class="contact-lede">
+			Cuéntanos tu meta y recibe una propuesta detallada en menos de 24 horas laborables.
+		</p>
+
+		<div class="form-card">
+			<form class="quote-form" data-quote-form data-wa={waNumber}>
+				<div class="field">
+					<label class="field-label" for="name">Nombre completo</label>
+					<input
+						class="field-input"
+						id="name"
+						name="name"
+						type="text"
+						placeholder="Ej. Carlos Mendoza"
+						autocomplete="name"
+						required
+					/>
+				</div>
+
+				<div class="field">
+					<label class="field-label" for="phone">Teléfono / WhatsApp</label>
+					<input
+						class="field-input"
+						id="phone"
+						name="phone"
+						type="tel"
+						placeholder="+504 9999-9999"
+						autocomplete="tel"
+						inputmode="tel"
+						required
+					/>
+				</div>
+
+				<div class="field">
+					<label class="field-label" for="service">Tipo de proyecto</label>
+					<select class="field-input field-select" id="service" name="service">
+						{projectTypes.map((type) => <option>{type}</option>)}
+					</select>
+				</div>
+
+				<div class="field">
+					<label class="field-label" for="message">Mensaje o detalle del proyecto</label>
+					<textarea
+						class="field-input field-textarea"
+						id="message"
+						name="message"
+						rows="3"
+						placeholder="Describe brevemente qué necesitas y el objetivo de tu empresa..."
+					></textarea>
+				</div>
+
+				<button class="submit" type="submit">
+					<span>Enviar solicitud de cotización</span>
+					<span class="submit-arrow" aria-hidden="true">
+						<Icon name="hugeicons:arrow-right-01" size={14} />
+					</span>
+				</button>
+			</form>
+
+			<p class="form-note">
+				<Icon name="hugeicons:checkmark-circle-02" size={16} class="note-icon" aria-hidden="true" />
+				<span>Respuesta garantizada en 24h laborables · Sin compromiso</span>
+			</p>
+		</div>
+	</div>
+</section>
+
+<script>
+	const form = document.querySelector('[data-quote-form]');
+
+	if (form instanceof HTMLFormElement) {
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const data = new FormData(form);
+			const lines = [
+				'Hola Space Creative, quiero cotizar un proyecto.',
+				`Nombre: ${String(data.get('name') ?? '').trim()}`,
+				`Teléfono: ${String(data.get('phone') ?? '').trim()}`,
+				`Tipo de proyecto: ${String(data.get('service') ?? '').trim()}`,
+			];
+
+			const detail = String(data.get('message') ?? '').trim();
+			if (detail) lines.push(`Detalle: ${detail}`);
+
+			const url = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(lines.join('\n'))}`;
+			window.open(url, '_blank', 'noopener,noreferrer');
+		});
+	}
+</script>
+
+<style>
+	.contact {
+		position: relative;
+		overflow: hidden;
+		padding: 96px 0;
+		background: linear-gradient(180deg, #0b3f6b 0%, #0b2545 55%, #001026 100%);
+	}
+
+	@media (min-width: 640px) {
+		.contact {
+			padding: 128px 0;
+		}
+	}
+
+	.contact::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background: radial-gradient(ellipse 55% 45% at 50% 0%, rgba(0, 162, 253, 0.35), transparent 70%);
+	}
+
+	.clouds {
+		position: absolute;
+		inset: -4% -10%;
+		pointer-events: none;
+		background-repeat: no-repeat;
+		will-change: transform;
+		background-image:
+			radial-gradient(ellipse 45% 30% at 12% 18%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 72%),
+			radial-gradient(ellipse 50% 32% at 88% 28%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 72%),
+			radial-gradient(ellipse 60% 34% at 50% 4%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 75%);
+		animation: cloudDrift 70s linear infinite alternate;
+	}
+
+	@keyframes cloudDrift {
+		from {
+			transform: translate3d(-2%, 0.5%, 0);
+		}
+		to {
+			transform: translate3d(2%, -0.5%, 0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.clouds {
+			animation: none;
+		}
+	}
+
+	.contact-inner {
+		position: relative;
+		z-index: var(--z-content);
+		max-width: 56rem;
+		margin: 0 auto;
+		padding: 0 16px;
+		text-align: center;
+	}
+
+	@media (min-width: 640px) {
+		.contact-inner {
+			padding: 0 24px;
+		}
+	}
+
+	.contact-kicker {
+		font-family: var(--font-display);
+		font-size: 0.6875rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: #bfe0ff;
+	}
+
+	.contact-title {
+		margin-top: 16px;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(1.75rem, 1.1rem + 2.6vw, 3rem);
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		color: #ffffff;
+	}
+
+	.contact-lede {
+		margin: 16px auto 0;
+		max-width: 34rem;
+		font-size: clamp(0.9375rem, 0.88rem + 0.3vw, 1.125rem);
+		line-height: 1.7;
+		color: #e6f4ff;
+	}
+
+	.form-card {
+		max-width: 36rem;
+		margin: 40px auto 0;
+		padding: 24px;
+		border-radius: var(--radius-panel);
+		background: #ffffff;
+		box-shadow: 0 32px 64px -32px rgba(0, 16, 38, 0.65);
+		text-align: left;
+	}
+
+	@media (min-width: 640px) {
+		.form-card {
+			margin-top: 48px;
+			padding: 40px;
+		}
+	}
+
+	.quote-form {
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+	}
+
+	.field {
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+	}
+
+	.field-label {
+		font-family: var(--font-display);
+		font-size: 0.6875rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--clr-heading);
+	}
+
+	.field-input {
+		width: 100%;
+		padding: 13px 16px;
+		border: 1px solid #cbd5e1;
+		border-radius: var(--radius-inner);
+		background: #ffffff;
+		font-family: var(--font-body);
+		font-size: 1rem;
+		line-height: 1.5;
+		color: var(--clr-heading);
+		transition:
+			border-color 160ms ease,
+			box-shadow 160ms ease;
+	}
+
+	.field-input::placeholder {
+		color: #94a3b8;
+	}
+
+	.field-input:focus {
+		outline: none;
+		border-color: var(--clr-cerulean-ink);
+		box-shadow: 0 0 0 3px rgba(0, 162, 253, 0.2);
+	}
+
+	.field-select {
+		appearance: none;
+		padding-right: 44px;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b2545' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 16px center;
+		background-size: 16px;
+		cursor: pointer;
+	}
+
+	.field-textarea {
+		resize: vertical;
+		min-height: 96px;
+	}
+
+	.submit {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		width: 100%;
+		margin-top: 6px;
+		padding: 16px 20px;
+		border: 1px solid rgba(0, 162, 253, 0.4);
+		border-radius: var(--radius-inner);
+		background: var(--clr-deep);
+		color: #ffffff;
+		font-family: var(--font-display);
+		font-size: 0.8125rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition:
+			background-color 180ms ease,
+			transform 120ms ease;
+	}
+
+	.submit:hover {
+		background: var(--clr-deep-soft);
+	}
+
+	.submit:active {
+		transform: translateY(1px);
+	}
+
+	.submit:focus-visible {
+		outline: 3px solid var(--clr-cerulean-ink);
+		outline-offset: 3px;
+	}
+
+	.submit-arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		border-radius: var(--radius-pill);
+		background: var(--clr-cerulean);
+		color: #ffffff;
+	}
+
+	.form-note {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		margin-top: 18px;
+		padding-top: 18px;
+		border-top: 1px solid #e9eef4;
+		font-size: 0.75rem;
+		color: var(--clr-slate);
+		text-align: center;
+	}
+
+	.note-icon {
+		flex: 0 0 auto;
+		color: var(--clr-wa);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.submit,
+		.field-input {
+			transition: none;
+		}
+	}
+</style>

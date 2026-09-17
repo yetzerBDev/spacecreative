@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Space Creative — Sueña · Crea · Avanza | Desarrollo Web &amp; Software Honduras</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Space Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cerulean: '#00A2FD',
+              ceruleanHover: '#0090e3',
+              deepBlue: '#0B2545',
+              deepBlueDark: '#071b33',
+              abyss: '#001026',
+              slateSupport: '#74777F',
+              surfaceLight: '#FAFBFF',
+              surfaceAlt: '#F2F3FF',
+              whatsapp: '#25D366',
+              whatsappHover: '#1ebc59'
+            }
+          },
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+          },
+          boxShadow: {
+            'card-float': '0 20px 40px -15px rgba(11, 37, 69, 0.12), 0 0 1px 1px rgba(255,255,255,0.8)',
+            'glow-cerulean': '0 0 25px rgba(0, 162, 253, 0.45)',
+            'glow-deep': '0 10px 30px rgba(11, 37, 69, 0.3)',
+            'glow-wa': '0 8px 24px rgba(37, 211, 102, 0.4)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="sky-background">
+    .sky-hero-bg {
+      background: radial-gradient(circle at 50% 18%, #00a2fd 0%, #0077c8 45%, #0b2545 88%, #001026 100%);
+      position: relative;
+    }
+    .cloud-layer {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(ellipse 60% 40% at 50% 96%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0) 75%),
+        radial-gradient(ellipse 35% 25% at 15% 82%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 70%),
+        radial-gradient(ellipse 40% 30% at 85% 78%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 70%),
+        radial-gradient(ellipse 70% 35% at 50% 68%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 80%);
+      pointer-events: none;
+    }
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-white text-brand-deepBlue font-sans antialiased overflow-x-hidden selection:bg-brand-cerulean selection:text-white">
+<!-- BEGIN: Floating WhatsApp Button -->
+<aside class="fixed bottom-6 right-6 z-50 flex items-center group">
+<div class="mr-3 hidden sm:flex items-center px-3.5 py-1.5 rounded-full bg-brand-deepBlue/90 backdrop-blur text-white text-xs font-semibold shadow-lg border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none translate-x-2 group-hover:translate-x-0">
+      ¡Cotiza por WhatsApp!
+    </div>
+<a aria-label="Cotizar por WhatsApp con Space Creative" class="relative w-14 h-14 rounded-full bg-brand-whatsapp hover:bg-brand-whatsappHover text-white flex items-center justify-center shadow-glow-wa transition-transform transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-emerald-400" href="https://wa.me/50499999999?text=Hola%20Space%20Creative,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto" rel="noopener noreferrer" target="_blank">
+<span class="absolute -top-1 -right-1 flex h-4 w-4">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+<span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-300 border-2 border-brand-whatsapp"></span>
+</span>
+<svg class="w-7 h-7 fill-current" viewbox="0 0 24 24">
+<path d="M12.031 2C6.513 2 2.023 6.49 2.023 12.008c0 1.956.565 3.78 1.542 5.325L2.004 22l4.823-1.53c1.478.89 3.208 1.408 5.204 1.408 5.518 0 10.008-4.49 10.008-10.008S17.549 2 12.031 2zm5.795 14.195c-.244.686-1.42 1.31-1.956 1.395-.502.08-1.157.114-1.874-.117-.435-.14-1-.326-1.73-.643-3.053-1.326-5.044-4.407-5.197-4.612-.153-.204-1.246-1.657-1.246-3.16 0-1.503.787-2.245 1.066-2.551.278-.306.608-.383.81-.383.204 0 .408.002.585.011.189.01.442-.072.69.524.256.613.87 2.124.946 2.278.077.153.128.332.026.536-.102.204-.153.332-.306.51-.153.18-.322.402-.46.54-.153.153-.312.32-.134.626.178.306.793 1.309 1.702 2.119 1.168 1.04 2.152 1.363 2.458 1.516.306.153.485.128.664-.077.178-.204.765-.893.97-1.2.204-.306.408-.255.688-.153.28.102 1.785.842 2.091.995.306.153.51.23.586.357.077.128.077.74-.167 1.426z"></path>
+</svg>
+</a>
+</aside>
+<!-- END: Floating WhatsApp Button -->
+<!-- BEGIN: HeroSection enmarcado con bordes curvos y esquinas blancas -->
+<div class="p-3 sm:p-5 lg:p-6 bg-white">
+<div class="sky-hero-bg rounded-[32px] sm:rounded-[40px] border border-blue-200/40 overflow-hidden relative shadow-2xl" id="inicio">
+<div aria-hidden="true" class="cloud-layer"></div>
+<!-- Top Nav -->
+<header class="relative z-50 pt-5 sm:pt-7 px-4 sm:px-8 lg:px-12" data-purpose="site-navigation-bar">
+<nav aria-label="Navegación principal" class="max-w-7xl mx-auto flex items-center justify-between">
+<!-- Logo Oficial con cohete y lema -->
+<a class="flex items-center gap-3 group" href="#inicio" title="Space Creative — Sueña Crea Avanza">
+<div class="h-11 w-11 sm:h-12 sm:w-12 rounded-xl bg-white p-1.5 shadow-md flex items-center justify-center border border-white/50 transition-transform group-hover:scale-105">
+<img alt="Space Creative Logo Oficial con Cohete" class="h-full w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt3c78NXpyyqiZR0IvGADoMMqejnONNrsICioPT652hpCVd3Jv3LhxSExMmIIaPTcOAMLZwBBSCSpPhyGH0ymuRQLqHCfP7rB8PWWA2eSznrfhz8lUS792PKtZBQ55cdNhaRVpwtD2DZH8W3Vkk4JDiXXUH-nQgzz4oBGgy19hS7F45fWh9lfJmTOC9O1vxZBhZJZgqcgWcWmc7dPk5wsAEgwi_Iyt2VmJjo7FKS0J7FkevAGIad95w9IlRdBLLo3ReP0"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center">
+<span class="text-white font-display font-extrabold text-xl tracking-wider drop-shadow-sm">SPACE</span>
+<span class="text-white font-display font-semibold text-xs tracking-widest ml-1 bg-brand-cerulean px-2 py-0.5 rounded-full border border-white/30 shadow-sm">CREATIVE</span>
+</div>
+<span class="text-[9px] uppercase tracking-[0.22em] text-white/95 font-medium">Sueña · Crea · Avanza</span>
+</div>
+</a>
+<!-- Enlaces de navegación solicitados -->
+<div class="hidden lg:flex items-center space-x-7 text-xs font-semibold tracking-wider uppercase text-white/90 font-display">
+<a class="hover:text-white transition-colors" href="#inicio">INICIO</a>
+<a class="text-white/80 hover:text-white transition-colors" href="#servicios">SERVICIOS</a>
+<a class="text-white/80 hover:text-white transition-colors" href="#nosotros">NOSOTROS</a>
+<a class="text-white/80 hover:text-white transition-colors" href="#portafolio">PORTAFOLIO / DEMOS</a>
+<a class="text-white/80 hover:text-white transition-colors" href="#proceso">PROCESO</a>
+<a class="text-white/80 hover:text-white transition-colors" href="#contacto">CONTACTO</a>
+</div>
+<!-- Botón CTA WhatsApp Navbar -->
+<div class="flex items-center gap-3">
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-whatsapp hover:bg-brand-whatsappHover text-white font-display font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 transform hover:scale-105 shadow-glow-wa border border-white/40" data-purpose="header-cta" href="https://wa.me/50499999999?text=Hola%20Space%20Creative,%20quiero%20cotizar%20un%20proyecto" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12.031 2C6.513 2 2.023 6.49 2.023 12.008c0 1.956.565 3.78 1.542 5.325L2.004 22l4.823-1.53c1.478.89 3.208 1.408 5.204 1.408 5.518 0 10.008-4.49 10.008-10.008S17.549 2 12.031 2zm5.795 14.195c-.244.686-1.42 1.31-1.956 1.395-.502.08-1.157.114-1.874-.117-.435-.14-1-.326-1.73-.643-3.053-1.326-5.044-4.407-5.197-4.612-.153-.204-1.246-1.657-1.246-3.16 0-1.503.787-2.245 1.066-2.551-.278-.306.608-.383.81-.383.204 0 .408.002.585.011.189.01.442-.072.69.524.256.613.87 2.124.946 2.278.077.153.128.332.026.536-.102.204-.153.332-.306.51-.153.18-.322.402-.46.54-.153.153-.312.32-.134.626.178.306.793 1.309 1.702 2.119 1.168 1.04 2.152 1.363 2.458 1.516.306.153.485.128.664-.077.178-.204.765-.893.97-1.2.204-.306.408-.255.688-.153.28.102 1.785.842 2.091.995.306.153.51.23.586.357.077.128.077.74-.167 1.426z"></path>
+</svg>
+<span class="hidden sm:inline">Cotizar por</span> WhatsApp
+            </a>
+</div>
+</nav>
+</header>
+<!-- Hero Content -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center pt-16 sm:pt-24 lg:pt-28 pb-24 sm:pb-32 lg:pb-36">
+<div class="max-w-4xl mx-auto">
+<!-- Tag regional -->
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur text-white text-xs font-bold tracking-widest uppercase mb-6 border border-white/30 font-display">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Honduras &amp; Centroamérica Digital
+          </div>
+<h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-md font-display">
+            Impulsamos tu negocio en el mundo digital con <br class="hidden sm:inline"/><span class="text-white">desarrollo web y soluciones a la medida</span>
+</h1>
+<p class="mt-6 text-base sm:text-lg md:text-xl text-blue-50 max-w-2xl mx-auto font-normal leading-relaxed drop-shadow-sm">
+            Diseñamos sitios web profesionales, sistemas eficientes y estrategias de redes sociales que atraen clientes reales para tu empresa en Honduras y la región.
+          </p>
+</div>
+<!-- CTAs solicitados -->
+<div class="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4" data-purpose="hero-action-buttons">
+<a class="inline-flex items-center gap-2.5 bg-brand-whatsapp hover:bg-brand-whatsappHover text-white px-7 py-3.5 rounded-full font-display font-bold text-xs sm:text-sm uppercase tracking-wider transition-all transform hover:scale-105 shadow-glow-wa shadow-lg border border-white/30" href="https://wa.me/50499999999?text=Hola%20Space%20Creative,%20quiero%20cotizar%20un%20proyecto" rel="noopener noreferrer" target="_blank">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12.031 2C6.513 2 2.023 6.49 2.023 12.008c0 1.956.565 3.78 1.542 5.325L2.004 22l4.823-1.53c1.478.89 3.208 1.408 5.204 1.408 5.518 0 10.008-4.49 10.008-10.008S17.549 2 12.031 2zm5.795 14.195c-.244.686-1.42 1.31-1.956 1.395-.502.08-1.157.114-1.874-.117-.435-.14-1-.326-1.73-.643-3.053-1.326-5.044-4.407-5.197-4.612-.153-.204-1.246-1.657-1.246-3.16 0-1.503.787-2.245 1.066-2.551-.278-.306.608-.383.81-.383.204 0 .408.002.585.011.189.01.442-.072.69.524.256.613.87 2.124.946 2.278.077.153.128.332.026.536-.102.204-.153.332-.306.51-.153.18-.322.402-.46.54-.153.153-.312.32-.134.626.178.306.793 1.309 1.702 2.119 1.168 1.04 2.152 1.363 2.458 1.516.306.153.485.128.664-.077.178-.204.765-.893.97-1.2.204-.306.408-.255.688-.153.28.102 1.785.842 2.091.995.306.153.51.23.586.357.077.128.077.74-.167 1.426z"></path>
+</svg>
+<span>COTIZA TU PROYECTO</span>
+</a>
+<a class="glass-pill px-7 py-3.5 rounded-full text-white font-display font-semibold text-xs sm:text-sm uppercase tracking-wider hover:bg-white/25 transition-all shadow-sm flex items-center gap-2" href="#servicios">
+<span>VER NUESTROS SERVICIOS</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- END: HeroSection -->
+<!-- BEGIN: LogoTickerSection -->
+<section class="bg-brand-surfaceLight py-10 sm:py-12 border-b border-slate-200/70 relative z-20" data-purpose="partners-logo-ticker">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<p class="text-center text-xs font-semibold uppercase tracking-widest text-brand-slateSupport mb-7 font-display">
+        Respaldando empresas, marcas y proyectos en Honduras y la región
+      </p>
+<div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+<!-- Logo 1: AutoHonduras -->
+<div class="flex items-center gap-2 font-bold text-brand-deepBlue text-sm sm:text-base tracking-tight font-display">
+<svg class="w-6 h-6 text-brand-cerulean" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+<span>GO AUTOS HN</span>
+</div>
+<!-- Logo 2: Valois Corp -->
+<div class="flex items-center gap-2 font-bold text-brand-deepBlue text-sm sm:text-base tracking-tight font-display">
+<svg class="w-6 h-6 text-brand-deepBlue" fill="currentColor" viewbox="0 0 24 24"><path d="M13 3L4 14h7v7l9-11h-7z"></path></svg>
+<span>GRUPO VALOIS</span>
+</div>
+<!-- Logo 3: Nexus Labs -->
+<div class="flex items-center gap-2 font-bold text-brand-deepBlue text-sm sm:text-base tracking-tight font-display">
+<svg class="w-6 h-6 text-brand-deepBlue" fill="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="2.5"></circle>
+<path d="M12 7v10M7 12h10"></path>
+</svg>
+<span>NEXUS REGIONAL</span>
+</div>
+<!-- Logo 4: Inversiones C.A. -->
+<div class="flex items-center gap-2 font-bold text-brand-deepBlue text-sm sm:text-base tracking-tight font-display">
+<svg class="w-6 h-6 text-brand-cerulean" fill="currentColor" viewbox="0 0 24 24">
+<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+</svg>
+<span>PORTAL CA</span>
+</div>
+<!-- Logo 5: Kaizen Tech -->
+<div class="flex items-center gap-2 font-bold text-brand-deepBlue text-sm sm:text-base tracking-tight font-display">
+<svg class="w-6 h-6 text-brand-deepBlue" fill="currentColor" viewbox="0 0 24 24">
+<rect height="7" rx="1" width="7" x="3" y="3"></rect>
+<rect height="7" rx="1" width="7" x="14" y="3"></rect>
+<rect height="7" rx="1" width="7" x="14" y="14"></rect>
+<rect height="7" rx="1" width="7" x="3" y="14"></rect>
+</svg>
+<span>KAIZEN BIZ</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: LogoTickerSection -->
+<!-- BEGIN: AboutAndBentoSection -->
+<section class="py-20 sm:py-28 bg-brand-surfaceAlt/60" data-purpose="about-and-bento-grid" id="nosotros">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+<div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-slateSupport mb-3 font-display">
+<span class="w-2 h-2 rounded-full bg-brand-cerulean"></span>
+<span>QUIÉNES SOMOS</span>
+</div>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-deepBlue leading-[1.18] tracking-tight font-display">
+          Un aliado tecnológico enfocado en la eficiencia, el diseño moderno y el crecimiento de los negocios en Honduras.
+        </h2>
+<p class="mt-5 text-sm sm:text-base text-brand-slateSupport leading-relaxed max-w-2xl mx-auto">
+          Combinamos cercanía, comunicación transparente y rigor técnico para que medianas y grandes empresas den el salto digital con total confianza, presupuestos claros y resultados medibles.
+        </p>
+</div>
+<!-- BENTO GRID METRICS -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+<!-- Bento Col 1: Space Core -->
+<div class="md:col-span-4 bg-gradient-to-b from-[#0e3b6d] to-brand-deepBlue rounded-3xl p-6 sm:p-7 relative overflow-hidden flex flex-col justify-between min-h-[440px] shadow-xl text-white group border border-blue-900/40" data-purpose="bento-card-talent">
+<div class="flex items-center justify-between z-10">
+<div class="flex items-center gap-2 font-display font-black text-xl tracking-wider uppercase">
+<span>SPACE</span>
+<span class="text-[10px] bg-brand-cerulean/30 border border-brand-cerulean/50 text-white px-2 py-0.5 rounded-full font-display font-bold">CORE</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-white/15 backdrop-blur flex items-center justify-center border border-white/20">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center pt-8 pointer-events-none">
+<img alt="Ingeniero de Software Space Creative" class="w-64 h-64 object-cover rounded-full mix-blend-luminosity opacity-85 transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKQdh6dKfjHo_Rqpt3JMMyXxZlicGXg2aU_njyaVuBQ8Cdiwo9DUjKVAzXLHf-wYw2ceMFmpaY53b-4-kpQUUlC9BJBJlI3jR9Cvb2cfo0_5kMty9O9Z5JyJdILxuhXZpOiHo41qKVXQyjWaX7C4cUC0tj9SKbacYgvl-q54TJO1qYimMV6RaK8sCqb3sFGIcxdHFdOaeTBtxD_58XPxsW6E9qSxFJDC3w-L1Ue-jmlA84zSR3iaNxMw"/>
+</div>
+<div class="relative z-10 bg-white rounded-2xl p-5 text-brand-deepBlue shadow-xl mt-auto border border-blue-100/60">
+<div class="text-3xl sm:text-4xl font-black font-display text-brand-deepBlue tracking-tight">45+</div>
+<p class="text-xs sm:text-sm text-brand-slateSupport mt-1 font-medium leading-snug">
+              Proyectos web, sistemas empresariales y campañas digitales entregadas con éxito a tiempo.
+            </p>
+</div>
+</div>
+<!-- Bento Col 2: Compromiso y Cercanía -->
+<div class="md:col-span-4 bg-white rounded-3xl p-7 sm:p-8 flex flex-col justify-between border border-slate-200/80 shadow-sm min-h-[440px]" data-purpose="bento-card-commitment">
+<div>
+<span class="text-xs font-semibold text-brand-slateSupport uppercase tracking-wider block font-display">Cercanía y Garantía</span>
+<div class="text-5xl sm:text-6xl font-black text-brand-deepBlue font-display mt-2 tracking-tight">100%</div>
+</div>
+<div class="my-6">
+<div class="flex items-center -space-x-2.5 mb-4">
+<img alt="Cliente Space Creative 1" class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKQFt-SNKIVq82FvPOU8sNGizsXFk7BvxO3QedESgYrN8SW5dXdF51DNyeC_YovTn9_qTPPQNet1M1eooTk6sXZrzMxbyIkhrfx2QNzwc7rz4m7m1tlq8INEjAZACxXaLY7ndbKdz_b-kK1VLWh-TepbNDmzBVlh8UNz2ydmc3PS9mDKZEQdLOp6cXldzsCsZsvJGfmsPqN_bjWGe7ap0p7pY8LgRf3v7IDA349GPybGDebOiCiVH3OQ"/>
+<img alt="Cliente Space Creative 2" class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC_iG288-qq3qEWKuTqu4DtB_0mC7aRkMeP5_9cWMUZMxJSHA_wQx9srmopxQbHehdLDgqJK0n8RwSIAKfNslOWky4RphOYnnVaD8sSgE3xjVYkdSnNlkCNZcGVimgX2MXz9ebJ0eqaM2uiU5jt-KPbOg59qf27sYtwYHJ9q5G3LjZn3jkdnWGHocNi0uOiREClt-QVs2PrGn9s6H2OAOml2HSsMkHgiFrMZi-ci_EV76LS683K2MZ4A"/>
+<img alt="Cliente Space Creative 3" class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxgvJGKUANmprbCoUXDmRkTrGJGLWRGeTZy7DG3hQhphYVO3vmD0DzdMjlPWFPDxvOQHZcVm1-k3zEqpEzaSmBYyNTOi1Db5jgSw70vH_DBMdgnVThh8RITRQh-kvv2kX78O5B7a4hpgPqKq3apF8-iDC0BOgMEYMyv3nm--jJA8KhGSm03gViT72BocJsi9pNYMWffGp3h4Hp9xj1O7po5geGp2UEsQ8wHCcQVU9h_p4lHnfpT5DMCw"/>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-brand-deepBlue text-white text-[11px] font-bold flex items-center justify-center shadow-sm">
+                +30
+              </div>
+</div>
+<blockquote class="text-sm text-brand-slateSupport font-medium leading-relaxed italic">
+              "Trabajar con Space Creative nos dio la tranquilidad de contar con un equipo técnico local que responde de inmediato, respeta los tiempos y entrega código limpio."
+            </blockquote>
+</div>
+<div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-brand-slateSupport font-display">
+<span class="font-semibold text-brand-deepBlue">Dirección Comercial</span>
+<span>Tegucigalpa, Honduras</span>
+</div>
+</div>
+<!-- Bento Col 3: Entrega por Hitos & Presencia -->
+<div class="md:col-span-4 flex flex-col gap-6" data-purpose="bento-right-column">
+<div class="bg-gradient-to-br from-brand-cerulean to-brand-deepBlue text-white rounded-3xl p-7 sm:p-8 flex-1 flex flex-col justify-between shadow-lg transition-transform hover:-translate-y-1 duration-200 border border-blue-300/30">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-blue-100 block font-display">Velocidad de Carga</span>
+<div class="text-4xl sm:text-5xl font-black text-white font-display mt-2 tracking-tight">&lt; 1.2s</div>
+</div>
+<p class="text-xs sm:text-sm font-medium text-blue-50 mt-4 leading-normal">
+              Sitios optimizados para el estándar web moderno con alta retención en dispositivos móviles.
+            </p>
+</div>
+<div class="bg-brand-abyss text-white rounded-3xl p-6 sm:p-7 flex items-center justify-between shadow-md border border-slate-800 transition-transform hover:-translate-y-1 duration-200">
+<div>
+<span class="text-xs font-semibold text-brand-slateSupport uppercase tracking-wider font-display">Cobertura</span>
+<p class="text-xs text-slate-300 mt-0.5">Tegucigalpa &amp; SPS</p>
+</div>
+<div class="text-2xl sm:text-3xl font-black font-display text-white tracking-tight">
+              Honduras<span class="text-brand-cerulean"> / CA</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AboutAndBentoSection -->
+<!-- BEGIN: ServicesSection (Nuestros Pilares en contenedor #0B2545 con paperclip cards) -->
+<section class="py-14 sm:py-20 bg-white relative z-20" data-purpose="services-grid" id="servicios">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-gradient-to-br from-[#0e3057] via-brand-deepBlue to-brand-abyss rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-2xl relative overflow-hidden border border-blue-900/50">
+<div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-brand-cerulean/15 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-brand-cerulean/10 blur-2xl pointer-events-none"></div>
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 relative z-10">
+<div>
+<div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-100 bg-white/10 px-3.5 py-1.5 rounded-full mb-3 backdrop-blur-sm border border-white/15 font-display">
+<span class="w-2 h-2 rounded-full bg-brand-cerulean shadow-glow-cerulean"></span>
+<span>NUESTROS PILARES TECNOLÓGICOS</span>
+</div>
+<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-display">
+              Servicios pensados para hacer crecer tu marca
+            </h2>
+</div>
+<p class="text-blue-100/80 text-sm sm:text-base max-w-md mt-4 md:mt-0 font-normal leading-relaxed">
+            Ingeniería de software, diseño intuitivo y presencia estratégica estructurada para ofrecer retornos claros a tu inversión.
+          </p>
+</div>
+<!-- 4 Tarjetas Blancas con Paperclip metálico rotadas sutilmente -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 sm:gap-6 lg:gap-6 pt-4 pb-2 items-start relative z-10">
+<!-- Pilar 1: Desarrollo Web con IMAGE_6 -->
+<div class="group relative bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform -rotate-1 hover:rotate-0 hover:-translate-y-2 border border-slate-100 min-h-[360px] flex flex-col justify-between overflow-visible">
+<!-- Paperclip metálico -->
+<div class="absolute -top-5 right-6 z-20 pointer-events-none drop-shadow-md">
+<svg class="w-7 h-12 text-slate-400" fill="none" viewbox="0 0 28 48">
+<path d="M18 6C18 3.79086 16.2091 2 14 2C11.7909 2 10 3.79086 10 6V36C10 39.866 13.134 43 17 43C20.866 43 24 39.866 24 36V12C24 9.23858 21.7614 7 19 7C16.2386 7 14 9.23858 14 12V32" stroke="#94a3b8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<path d="M17.5 6C17.5 4.067 15.933 2.5 14 2.5C12.067 2.5 10.5 4.067 10.5 6V36C10.5 39.5899 13.4101 42.5 17 42.5C20.5899 42.5 23.5 39.5899 23.5 36V12C23.5 9.51472 21.4853 7.5 19 7.5C16.5147 7.5 14.5 9.51472 14.5 12V32" stroke="#f8fafc" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-lg font-bold text-brand-deepBlue font-display tracking-tight leading-snug pr-6">Desarrollo Web</h3>
+<div class="mt-2.5">
+<span class="inline-block bg-brand-deepBlue text-white text-[11px] font-semibold font-display px-3 py-1 rounded-full">Web &amp; Landing Pages</span>
+</div>
+</div>
+<div class="my-3 w-full">
+<img alt="Desarrollo Web y Landing Pages Space Creative" class="w-full h-36 object-cover rounded-2xl shadow-inner mb-3 border border-slate-100" src="https://lh3.googleusercontent.com/aida/AEtjO1XGRYEKeehW_mOr3rXwe3XtbYSe7bojpdFbE2w577N11nnGxWMUwFk8jqJEQzUMME8AUbccOCI3WR0xiikcZrg-7vdcptca7ZlfIw171jPJWAsPhAXikapim867FyCjhiX2aPwp-H5c9p1iPdmmMUXPfClQPcXIwWi70E-C8o4PiRA-qq6Efl5VtGlyMEYTJQJL4k0Zz2qESWR1TBBHy4pTbFlxn_mrb2fQ54aHA97q7cILJ5NOSaRs_nl_"/>
+<p class="text-xs text-brand-slateSupport leading-relaxed">
+                Sitios corporativos de alto impacto, landing pages optimizadas para conversión y rendimiento móvil ultra veloz.
+              </p>
+</div>
+<div class="pt-2 border-t border-slate-100 text-[11px] text-brand-slateSupport font-medium flex items-center justify-between">
+<span>Optimizado para conversión</span>
+<span class="text-brand-cerulean font-bold group-hover:translate-x-0.5 transition-transform">→</span>
+</div>
+</div>
+<!-- Pilar 2: Desarrollo Móvil con IMAGE_5 -->
+<div class="group relative bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform rotate-1 hover:rotate-0 hover:-translate-y-2 border border-slate-100 min-h-[360px] flex flex-col justify-between overflow-visible">
+<div class="absolute -top-5 right-6 z-20 pointer-events-none drop-shadow-md">
+<svg class="w-7 h-12 text-slate-400" fill="none" viewbox="0 0 28 48">
+<path d="M18 6C18 3.79086 16.2091 2 14 2C11.7909 2 10 3.79086 10 6V36C10 39.866 13.134 43 17 43C20.866 43 24 39.866 24 36V12C24 9.23858 21.7614 7 19 7C16.2386 7 14 9.23858 14 12V32" stroke="#94a3b8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<path d="M17.5 6C17.5 4.067 15.933 2.5 14 2.5C12.067 2.5 10.5 4.067 10.5 6V36C10.5 39.5899 13.4101 42.5 17 42.5C20.5899 42.5 23.5 39.5899 23.5 36V12C23.5 9.51472 21.4853 7.5 19 7.5C16.5147 7.5 14.5 9.51472 14.5 12V32" stroke="#f8fafc" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-lg font-bold text-brand-deepBlue font-display tracking-tight leading-snug pr-6">Desarrollo Móvil</h3>
+<div class="mt-2.5">
+<span class="inline-block bg-brand-deepBlue text-white text-[11px] font-semibold font-display px-3 py-1 rounded-full">iOS &amp; Android Apps</span>
+</div>
+</div>
+<div class="my-3 w-full">
+<img alt="Desarrollo Móvil Apps Space Creative" class="w-full h-36 object-cover rounded-2xl shadow-inner mb-3 border border-slate-100" src="https://lh3.googleusercontent.com/aida/AEtjO1XRZRXgFD1JWO54tz9T_oKd0SXU6gsjArNMelsJqJeWDcbWVb8XJXk7C0y5mMvWYnouQ8T7_7Ur49zd5zfFqQNwfi7f88GgZhjqK4X58gNjQFGBaphnESOqFHmNccc-vuXYvCTbZtLyurD5Acl0naNlmTaftyvS9Yv4TE-3fueK9NBM6FlRYFK5vSYNcap5CJp7gT4OXkyqsWx9GnDrEiawfEXkzJZS1Coo5jhmRLtxEPEiL06QTAGB5mep"/>
+<p class="text-xs text-brand-slateSupport leading-relaxed">
+                Aplicaciones funcionales nativas e híbridas, orientadas 100% a la experiencia del usuario y flujos ágiles.
+              </p>
+</div>
+<div class="pt-2 border-t border-slate-100 text-[11px] text-brand-slateSupport font-medium flex items-center justify-between">
+<span>UX Fluida &amp; React Native</span>
+<span class="text-brand-cerulean font-bold group-hover:translate-x-0.5 transition-transform">→</span>
+</div>
+</div>
+<!-- Pilar 3: Arquitectura Backend con IMAGE_4 -->
+<div class="group relative bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform -rotate-2 hover:rotate-0 hover:-translate-y-2 border border-slate-100 min-h-[360px] flex flex-col justify-between overflow-visible">
+<div class="absolute -top-5 right-6 z-20 pointer-events-none drop-shadow-md">
+<svg class="w-7 h-12 text-slate-400" fill="none" viewbox="0 0 28 48">
+<path d="M18 6C18 3.79086 16.2091 2 14 2C11.7909 2 10 3.79086 10 6V36C10 39.866 13.134 43 17 43C20.866 43 24 39.866 24 36V12C24 9.23858 21.7614 7 19 7C16.2386 7 14 9.23858 14 12V32" stroke="#94a3b8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<path d="M17.5 6C17.5 4.067 15.933 2.5 14 2.5C12.067 2.5 10.5 4.067 10.5 6V36C10.5 39.5899 13.4101 42.5 17 42.5C20.5899 42.5 23.5 39.5899 23.5 36V12C23.5 9.51472 21.4853 7.5 19 7.5C16.5147 7.5 14.5 9.51472 14.5 12V32" stroke="#f8fafc" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-lg font-bold text-brand-deepBlue font-display tracking-tight leading-snug pr-6">Arquitectura Backend</h3>
+<div class="mt-2.5">
+<span class="inline-block bg-brand-deepBlue text-white text-[11px] font-semibold font-display px-3 py-1 rounded-full">Sistemas &amp; APIs</span>
+</div>
+</div>
+<div class="my-3 w-full">
+<img alt="Arquitectura Backend y APIs Space Creative" class="w-full h-36 object-cover rounded-2xl shadow-inner mb-3 border border-slate-100" src="https://lh3.googleusercontent.com/aida/AEtjO1WcxmuGp9uJafXpLwLc31SD0tRuB_3qmOFE_zf0YqS-hVc-vDvU1qkoaxFiLtlyCuZ6tO4TWDQ9TQnYywg9zIgjZ8fT0Ku4x6H2MswPPItspMIPLKNOT5wAmJxkGtvnGqNKTlTAvuKHlF0PR4Gw0OlRIe9UEl_xg393QtOdIu1L38rI4Go5YChh5snIsQ3pA6tQ715hmEzAX92YBG4Mkvbfuy2tbfhsHoX-aHJNNowEghRdlzM4onMJBxJX"/>
+<p class="text-xs text-brand-slateSupport leading-relaxed">
+                Bases de datos robustas, sistemas internos empresariales, APIs escalables y automatización de procesos.
+              </p>
+</div>
+<div class="pt-2 border-t border-slate-100 text-[11px] text-brand-slateSupport font-medium flex items-center justify-between">
+<span>Cloud Seguro &amp; Escalable</span>
+<span class="text-brand-cerulean font-bold group-hover:translate-x-0.5 transition-transform">→</span>
+</div>
+</div>
+<!-- Pilar 4: Manejo de Redes Sociales con IMAGE_3 -->
+<div class="group relative bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform rotate-2 hover:rotate-0 hover:-translate-y-2 border border-slate-100 min-h-[360px] flex flex-col justify-between overflow-visible">
+<div class="absolute -top-5 right-6 z-20 pointer-events-none drop-shadow-md">
+<svg class="w-7 h-12 text-slate-400" fill="none" viewbox="0 0 28 48">
+<path d="M18 6C18 3.79086 16.2091 2 14 2C11.7909 2 10 3.79086 10 6V36C10 39.866 13.134 43 17 43C20.866 43 24 39.866 24 36V12C24 9.23858 21.7614 7 19 7C16.2386 7 14 9.23858 14 12V32" stroke="#94a3b8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<path d="M17.5 6C17.5 4.067 15.933 2.5 14 2.5C12.067 2.5 10.5 4.067 10.5 6V36C10.5 39.5899 13.4101 42.5 17 42.5C20.5899 42.5 23.5 39.5899 23.5 36V12C23.5 9.51472 21.4853 7.5 19 7.5C16.5147 7.5 14.5 9.51472 14.5 12V32" stroke="#f8fafc" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-lg font-bold text-brand-deepBlue font-display tracking-tight leading-snug pr-6">Manejo de Redes</h3>
+<div class="mt-2.5">
+<span class="inline-block bg-brand-deepBlue text-white text-[11px] font-semibold font-display px-3 py-1 rounded-full">Estrategia &amp; Growth</span>
+</div>
+</div>
+<div class="my-3 w-full">
+<img alt="Estrategia y Manejo de Redes Sociales Space Creative" class="w-full h-36 object-cover rounded-2xl shadow-inner mb-3 border border-slate-100" src="https://lh3.googleusercontent.com/aida/AEtjO1UqXnGXrH30DHlhhlDLz3t59kEaNlk_LfsUdtcb3dPpdj5P2HjIxULH-4pP6_vGx9tcBRJiLFT3v9K3asL2v0v-Pt5E6vnMw67J-f1anpBjuHMESlOfJSe9BYG_tAEdJIO-TY9E48yStyuA4ED1MW0woFrcs2attspCWhKMWStEUsd8i41fOfOae_vrrAf18yS08IXHQL1k8t09_PhafUMHNzXHboqvngtXZ9dnXvSOvYx0Uy-rs_NyaZQw"/>
+<p class="text-xs text-brand-slateSupport leading-relaxed">
+                Estrategia digital, diseño de contenido gráfico de alto nivel y gestión orientada a mantener tu marca activa y captando prospectos.
+              </p>
+</div>
+<div class="pt-2 border-t border-slate-100 text-[11px] text-brand-slateSupport font-medium flex items-center justify-between">
+<span>Conversión &amp; Tráfico</span>
+<span class="text-brand-cerulean font-bold group-hover:translate-x-0.5 transition-transform">→</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ServicesSection -->
+<!-- BEGIN: Portafolio / Demos Interactivos -->
+<section class="py-20 sm:py-28 bg-brand-surfaceLight border-t border-slate-200/70" data-purpose="portfolio-demos" id="portafolio">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16">
+<div>
+<div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-cerulean font-display mb-2">
+<span class="w-2 h-2 rounded-full bg-brand-cerulean"></span>
+            PORTAFOLIO DE PROYECTOS
+          </div>
+<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deepBlue tracking-tight font-display">
+            Demostraciones y proyectos recientes
+          </h2>
+</div>
+<p class="text-brand-slateSupport text-sm sm:text-base max-w-md mt-4 md:mt-0 font-normal leading-relaxed">
+          Explora prototipos interactivos desarrollados para validar soluciones de negocio con inmediatez.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Proyecto 1: GoAutos -->
+<div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+<div>
+<div class="relative overflow-hidden rounded-2xl mb-5 bg-slate-100 aspect-[16/10]">
+<div class="absolute top-3 left-3 z-10">
+<span class="px-3 py-1 rounded-full bg-brand-cerulean text-white text-[10px] font-bold tracking-wider uppercase shadow-sm">Demo Funcional</span>
+</div>
+<div class="w-full h-full bg-gradient-to-br from-brand-deepBlue via-[#0e3b6d] to-brand-cerulean flex flex-col items-center justify-center p-6 text-white group-hover:scale-105 transition-transform duration-500">
+<svg class="w-12 h-12 text-white/90 mb-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="font-display font-black text-xl tracking-wider">GoAutos HN</span>
+<span class="text-[11px] text-blue-100 mt-1 uppercase tracking-widest">Sector Automotriz</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-brand-deepBlue font-display">GoAutos — Plataforma para Sector Automotriz</h3>
+<p class="text-xs sm:text-sm text-brand-slateSupport mt-2 leading-relaxed">
+              Catálogo digital interactivo, filtro inteligente de vehículos por cuota y marca, cotizador automático vía WhatsApp y ficha técnica para concesionarios.
+            </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+<span class="text-xs font-semibold text-brand-deepBlue">Catálogo &amp; Cotizador</span>
+<a class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-cerulean hover:text-brand-ceruleanHover group-hover:translate-x-1 transition-transform" href="https://wa.me/50499999999?text=Hola,%20quisiera%20ver%20el%20demo%20de%20GoAutos" rel="noopener noreferrer" target="_blank">
+<span>Ver Prototipo</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</a>
+</div>
+</div>
+<!-- Proyecto 2: Portal Corporativo & Finanzas -->
+<div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+<div>
+<div class="relative overflow-hidden rounded-2xl mb-5 bg-slate-100 aspect-[16/10]">
+<div class="absolute top-3 left-3 z-10">
+<span class="px-3 py-1 rounded-full bg-brand-deepBlue text-white text-[10px] font-bold tracking-wider uppercase shadow-sm">Enterprise Web</span>
+</div>
+<div class="w-full h-full bg-gradient-to-br from-slate-900 via-brand-deepBlue to-slate-800 flex flex-col items-center justify-center p-6 text-white group-hover:scale-105 transition-transform duration-500">
+<svg class="w-12 h-12 text-brand-cerulean mb-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="font-display font-black text-xl tracking-wider">FinControl CA</span>
+<span class="text-[11px] text-slate-300 mt-1 uppercase tracking-widest">Portal Financiero</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-brand-deepBlue font-display">Portal Corporativo &amp; Finanzas</h3>
+<p class="text-xs sm:text-sm text-brand-slateSupport mt-2 leading-relaxed">
+              Dashboard empresarial de alta seguridad para control de cobros, reportes en tiempo real y facturación conectada para equipos de administración.
+            </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+<span class="text-xs font-semibold text-brand-deepBlue">Fintech &amp; Cobros</span>
+<a class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-cerulean hover:text-brand-ceruleanHover group-hover:translate-x-1 transition-transform" href="https://wa.me/50499999999?text=Hola,%20quisiera%20conocer%20el%20Portal%20Corporativo" rel="noopener noreferrer" target="_blank">
+<span>Ver Prototipo</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</a>
+</div>
+</div>
+<!-- Proyecto 3: SaaS & Plataforma de Gestión -->
+<div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+<div>
+<div class="relative overflow-hidden rounded-2xl mb-5 bg-slate-100 aspect-[16/10]">
+<div class="absolute top-3 left-3 z-10">
+<span class="px-3 py-1 rounded-full bg-emerald-600 text-white text-[10px] font-bold tracking-wider uppercase shadow-sm">SaaS Interno</span>
+</div>
+<div class="w-full h-full bg-gradient-to-br from-brand-deepBlue via-[#005a96] to-brand-cerulean flex flex-col items-center justify-center p-6 text-white group-hover:scale-105 transition-transform duration-500">
+<svg class="w-12 h-12 text-white/90 mb-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="font-display font-black text-xl tracking-wider">OpsFlow Cloud</span>
+<span class="text-[11px] text-blue-100 mt-1 uppercase tracking-widest">Optimización &amp; CRM</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-brand-deepBlue font-display">SaaS &amp; Plataforma de Gestión</h3>
+<p class="text-xs sm:text-sm text-brand-slateSupport mt-2 leading-relaxed">
+              Sistema interno para optimización operativa, seguimiento de prospectos comerciales y automatización de tareas recurrentes para empresas en expansión.
+            </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+<span class="text-xs font-semibold text-brand-deepBlue">Gestión &amp; Flujos</span>
+<a class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-cerulean hover:text-brand-ceruleanHover group-hover:translate-x-1 transition-transform" href="https://wa.me/50499999999?text=Hola,%20quisiera%20solicitar%20un%20SaaS%20a%20medida" rel="noopener noreferrer" target="_blank">
+<span>Ver Prototipo</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Portafolio -->
+<!-- BEGIN: ProcessMethodologySection (Claridad, Hitos y Cero Sorpresas) -->
+<section class="py-20 sm:py-24 bg-brand-abyss text-white relative overflow-hidden" data-purpose="methodology-section" id="proceso">
+<div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-brand-cerulean/15 filter blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-brand-deepBlue filter blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="text-xs font-bold uppercase tracking-widest text-brand-cerulean font-display">CÓMO TRABAJAMOS</span>
+<h2 class="text-3xl sm:text-4xl font-black mt-2 font-display">
+          Claridad, Hitos y Cero Sorpresas
+        </h2>
+<p class="text-slate-300 text-sm mt-3">
+          Esquema seguro por etapas para que siempre tengas el control de tu inversión.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Paso 1 -->
+<div class="bg-brand-deepBlue/60 backdrop-blur border border-blue-900/60 rounded-3xl p-8 hover:border-brand-cerulean/50 transition-colors flex flex-col justify-between">
+<div>
+<div class="text-brand-cerulean font-display text-4xl font-extrabold mb-3">01</div>
+<h3 class="text-xl font-bold mb-3 font-display text-white">Brief / Definición</h3>
+<p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Entendemos lo que necesita tu negocio, mapeamos requerimientos críticos y definimos alcance exacto, presupuesto cerrado y cronograma.
+            </p>
+</div>
+<div class="mt-6 pt-4 border-t border-blue-900/40 text-[11px] uppercase tracking-wider text-brand-cerulean font-semibold">
+            Etapa 1: Alcance &amp; Requerimientos
+          </div>
+</div>
+<!-- Paso 2 -->
+<div class="bg-brand-deepBlue/60 backdrop-blur border border-blue-900/60 rounded-3xl p-8 hover:border-brand-cerulean/50 transition-colors flex flex-col justify-between">
+<div>
+<div class="text-brand-cerulean font-display text-4xl font-extrabold mb-3">02</div>
+<h3 class="text-xl font-bold mb-3 font-display text-white">Prototipo por Hitos</h3>
+<p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Avances claros con esquema de pago seguro (Anticipo inicial, Prototipo interactivo navegable aprobado y Entrega Final probada).
+            </p>
+</div>
+<div class="mt-6 pt-4 border-t border-blue-900/40 text-[11px] uppercase tracking-wider text-brand-cerulean font-semibold">
+            Etapa 2: Pagos Seguros &amp; Validación
+          </div>
+</div>
+<!-- Paso 3 -->
+<div class="bg-brand-deepBlue/60 backdrop-blur border border-blue-900/60 rounded-3xl p-8 hover:border-brand-cerulean/50 transition-colors flex flex-col justify-between">
+<div>
+<div class="text-brand-cerulean font-display text-4xl font-extrabold mb-3">03</div>
+<h3 class="text-xl font-bold mb-3 font-display text-white">Lanzamiento &amp; Soporte</h3>
+<p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Tu negocio listo y operando en internet con inducción a tu equipo, alta velocidad, certificados SSL y soporte técnico continuo local.
+            </p>
+</div>
+<div class="mt-6 pt-4 border-t border-blue-900/40 text-[11px] uppercase tracking-wider text-brand-cerulean font-semibold">
+            Etapa 3: Puesta en marcha &amp; Acompañamiento
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ProcessMethodologySection -->
+<!-- BEGIN: CTASection (Contacto & Formulario) -->
+<section class="sky-hero-bg py-24 relative overflow-hidden" data-purpose="final-cta-section" id="contacto">
+<div aria-hidden="true" class="cloud-layer"></div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur text-white text-xs font-bold tracking-wider uppercase mb-6 border border-white/30 font-display">
+<span>COTIZA TU PROYECTO HOY</span>
+</div>
+<h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight font-display">
+        Hagamos realidad tu próximo gran hito digital
+      </h2>
+<p class="mt-4 text-base sm:text-lg text-blue-100 max-w-xl mx-auto font-normal">
+        Cuéntanos tu meta y recibe una propuesta detallada en menos de 24 horas laborables.
+      </p>
+<!-- Form Container Card -->
+<div class="mt-10 bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-10 shadow-2xl text-left max-w-xl mx-auto border border-white/80">
+<form class="space-y-4" onsubmit="event.preventDefault(); alert('¡Gracias por contactar a Space Creative! Te responderemos de inmediato vía WhatsApp o correo.');">
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-brand-deepBlue mb-1 font-display" for="name">Nombre completo</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-cerulean focus:border-transparent outline-none transition-all" id="name" placeholder="Ej. Carlos Mendoza" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-brand-deepBlue mb-1 font-display" for="phone">Teléfono / WhatsApp</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-cerulean focus:border-transparent outline-none transition-all" id="phone" placeholder="+504 9999-9999" required="" type="tel"/>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-brand-deepBlue mb-1 font-display" for="service">Tipo de proyecto</label>
+<select class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-cerulean focus:border-transparent outline-none transition-all bg-white" id="service">
+<option>Desarrollo Web (Sitio Corporativo / Landing)</option>
+<option>Desarrollo Móvil (App iOS / Android)</option>
+<option>Arquitectura Backend / Sistema Empresarial</option>
+<option>Manejo de Redes Sociales &amp; Estrategia Digital</option>
+<option>Solución Integral a la Medida</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-brand-deepBlue mb-1 font-display" for="message">Mensaje o detalle del proyecto</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-cerulean focus:border-transparent outline-none transition-all" id="message" placeholder="Describe brevemente qué necesitas y el objetivo de tu empresa..." rows="3"></textarea>
+</div>
+<button class="w-full py-4 rounded-xl bg-brand-deepBlue hover:bg-brand-deepBlueDark text-white font-display font-bold text-sm uppercase tracking-wider transition-all transform hover:scale-[1.01] shadow-lg flex items-center justify-center gap-2 mt-4 border border-brand-cerulean/40" type="submit">
+<span>ENVIAR SOLICITUD DE COTIZACIÓN</span>
+<div class="w-5 h-5 rounded-full bg-brand-cerulean text-white flex items-center justify-center">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+</button>
+</form>
+<div class="mt-4 pt-4 border-t border-slate-200/80 flex items-center justify-center gap-2 text-center text-xs text-brand-slateSupport">
+<svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path></svg>
+<span>Respuesta garantizada en 24h laborables · Sin compromiso</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: CTASection -->
+<!-- BEGIN: Footer -->
+<footer class="bg-brand-abyss text-slate-400 py-16 border-t border-blue-950/80" data-purpose="page-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+<!-- Brand Col -->
+<div class="md:col-span-2">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-md">
+<img alt="Space Creative Logo Oficial" class="h-full w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt3c78NXpyyqiZR0IvGADoMMqejnONNrsICioPT652hpCVd3Jv3LhxSExMmIIaPTcOAMLZwBBSCSpPhyGH0ymuRQLqHCfP7rB8PWWA2eSznrfhz8lUS792PKtZBQ55cdNhaRVpwtD2DZH8W3Vkk4JDiXXUH-nQgzz4oBGgy19hS7F45fWh9lfJmTOC9O1vxZBhZJZgqcgWcWmc7dPk5wsAEgwi_Iyt2VmJjo7FKS0J7FkevAGIad95w9IlRdBLLo3ReP0"/>
+</div>
+<div>
+<span class="text-white font-display font-bold text-lg tracking-wider">SPACE</span>
+<span class="text-brand-cerulean font-display font-semibold text-xs ml-1">CREATIVE</span>
+</div>
+</div>
+<p class="mt-4 text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed">
+            Estudio de desarrollo tecnológico, ingeniería web y marketing digital enfocado en el crecimiento real de empresas en Honduras y la región.
+          </p>
+<div class="mt-4 text-[11px] uppercase tracking-widest text-brand-cerulean font-display font-semibold">
+            SUEÑA — CREA — AVANZA
+          </div>
+</div>
+<!-- Links Col 1: Navegación -->
+<div>
+<h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4 font-display">Navegación</h5>
+<ul class="space-y-2.5 text-xs">
+<li><a class="hover:text-white transition-colors" href="#inicio">Inicio</a></li>
+<li><a class="hover:text-white transition-colors" href="#servicios">Servicios</a></li>
+<li><a class="hover:text-white transition-colors" href="#nosotros">Quiénes Somos</a></li>
+<li><a class="hover:text-white transition-colors" href="#portafolio">Portafolio / Demos</a></li>
+<li><a class="hover:text-white transition-colors" href="#proceso">Proceso de Trabajo</a></li>
+</ul>
+</div>
+<!-- Links Col 2: Servicios -->
+<div>
+<h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4 font-display">Servicios</h5>
+<ul class="space-y-2.5 text-xs">
+<li><a class="hover:text-white transition-colors" href="#servicios">Desarrollo Web</a></li>
+<li><a class="hover:text-white transition-colors" href="#servicios">Desarrollo Móvil</a></li>
+<li><a class="hover:text-white transition-colors" href="#servicios">Arquitectura Backend</a></li>
+<li><a class="hover:text-white transition-colors" href="#servicios">Manejo de Redes</a></li>
+</ul>
+</div>
+<!-- Links Col 3: Contacto & Región -->
+<div>
+<h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4 font-display">Contacto</h5>
+<p class="text-xs text-slate-300 font-medium mb-1">Tegucigalpa / San Pedro Sula</p>
+<p class="text-xs text-slate-400 mb-2">Honduras, Centroamérica</p>
+<p class="text-xs text-slate-400 mb-1">contacto@spacecreative.io</p>
+<p class="text-xs text-brand-cerulean font-medium mb-4">+504 9999-9999</p>
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-brand-deepBlue/70 border border-blue-900/60 text-[10px] text-brand-cerulean">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Proyectos Activos 2025
+          </div>
+</div>
+</div>
+<!-- Sub footer -->
+<div class="mt-14 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-slateSupport font-display">
+<p>© 2025 Space Creative. Todos los derechos reservados. Sueña · Crea · Avanza.</p>
+<div class="flex space-x-6 mt-4 sm:mt-0">
+<a class="hover:text-slate-300 transition-colors" href="#">Privacidad</a>
+<a class="hover:text-slate-300 transition-colors" href="#">Términos</a>
+<a class="hover:text-slate-300 transition-colors" href="#contacto">Cotizar</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>

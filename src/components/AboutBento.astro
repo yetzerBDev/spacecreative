@@ -1,0 +1,376 @@
+---
+const milestones = [
+	{ value: '50%', label: 'De anticipo para iniciar el proyecto.' },
+	{ value: '30%', label: 'A la entrega del prototipo funcional.' },
+	{ value: '20%', label: 'Contra entrega final del sitio publicado.' },
+];
+---
+
+<section class="about" id="nosotros">
+	<div class="about-inner">
+		<header class="about-head">
+			<p class="kicker">Quiénes somos</p>
+			<h2 class="about-title">
+				Un aliado tecnológico enfocado en la eficiencia, el diseño moderno y el crecimiento de los negocios en Honduras.
+			</h2>
+			<p class="about-lede">
+				Combinamos cercanía, comunicación transparente y rigor técnico para que medianas y grandes empresas den el
+				salto digital con total confianza, presupuestos claros y resultados medibles.
+			</p>
+		</header>
+
+		<div class="bento">
+			<article class="panel panel-core">
+				<div class="core-stat">
+					<p class="kicker">Lo que hacemos</p>
+					<h3 class="panel-headline">Web, apps y sistemas</h3>
+					<hr class="rule" />
+					<p class="panel-copy">
+						Sitios web, apps móviles, sistemas empresariales y estrategia de redes para negocios en Honduras.
+					</p>
+				</div>
+			</article>
+
+			<article class="panel panel-commit">
+				<div>
+					<p class="kicker">Cómo trabajamos</p>
+					<h3 class="panel-headline">Trabajamos por hitos</h3>
+					<hr class="rule" />
+					<p class="commit-note">Pagas conforme avanza el proyecto, nunca todo por adelantado.</p>
+				</div>
+
+				<ul class="milestones">
+					{
+						milestones.map((milestone) => (
+							<li class="milestone">
+								<span class="milestone-value">{milestone.value}</span>
+								<span class="milestone-label">{milestone.label}</span>
+							</li>
+						))
+					}
+				</ul>
+
+				<p class="commit-foot">La Ceiba, Honduras</p>
+			</article>
+
+			<div class="panel-col">
+				<article class="panel panel-speed">
+					<p class="kicker light">Desarrollo web</p>
+					<h3 class="panel-headline light">Rápido y medible</h3>
+					<p class="panel-copy light">
+						Landing pages y sitios corporativos optimizados en velocidad, SEO y conversión desde el móvil.
+					</p>
+				</article>
+
+				<article class="panel panel-cover">
+					<p class="kicker light">Cobertura</p>
+					<p class="cover-cities">Todo el territorio nacional</p>
+					<p class="cover-mode">Presencial y remoto, en tu horario.</p>
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.about {
+		background: color-mix(in srgb, var(--clr-surface-alt) 60%, #ffffff);
+		padding: 80px 0;
+	}
+
+	@media (min-width: 640px) {
+		.about {
+			padding: 112px 0;
+		}
+	}
+
+	.about-inner {
+		max-width: 80rem;
+		margin: 0 auto;
+		padding: 0 16px;
+	}
+
+	@media (min-width: 640px) {
+		.about-inner {
+			padding: 0 24px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.about-inner {
+			padding: 0 32px;
+		}
+	}
+
+	.about-head {
+		max-width: 60rem;
+		margin: 0 auto 64px;
+		text-align: center;
+	}
+
+	@media (min-width: 640px) {
+		.about-head {
+			margin-bottom: 80px;
+		}
+	}
+
+	.kicker {
+		font-family: var(--font-display);
+		font-size: 0.6875rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--clr-cerulean-ink);
+	}
+
+	.kicker.light {
+		color: #bfe0ff;
+	}
+
+	.about-head .kicker {
+		margin-bottom: 16px;
+	}
+
+	.about-title {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(1.875rem, 1.2rem + 2.4vw, 2.75rem);
+		line-height: 1.18;
+		letter-spacing: -0.02em;
+		color: var(--clr-heading);
+	}
+
+	.about-lede {
+		margin: 20px auto 0;
+		max-width: 42rem;
+		font-size: clamp(0.875rem, 0.82rem + 0.2vw, 1rem);
+		line-height: 1.7;
+		color: var(--clr-slate);
+	}
+
+	.bento {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 24px;
+		align-items: stretch;
+	}
+
+	@media (min-width: 768px) {
+		.bento {
+			grid-template-columns: repeat(12, 1fr);
+		}
+
+		.panel-core,
+		.panel-commit,
+		.panel-col {
+			grid-column: span 4;
+		}
+	}
+
+	.panel {
+		border-radius: var(--radius-panel);
+	}
+
+	.panel-headline {
+		margin-top: 14px;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2rem);
+		line-height: 1.12;
+		letter-spacing: -0.025em;
+		color: var(--clr-heading);
+	}
+
+	.panel-headline.light {
+		color: #ffffff;
+	}
+
+	.rule {
+		display: block;
+		height: 1px;
+		width: 100%;
+		margin: 14px 0 0;
+		border: 0;
+		background: #edf1f7;
+	}
+
+	.panel-copy {
+		margin-top: 12px;
+		font-size: 0.875rem;
+		line-height: 1.65;
+		color: var(--clr-slate);
+	}
+
+	.panel-copy.light {
+		color: #eaf4ff;
+	}
+
+	/* Panel: Space Core */
+	.panel-core {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		padding: 24px;
+		color: #ffffff;
+		background: linear-gradient(180deg, #0e3b6d 0%, var(--clr-deep) 100%);
+		border: 1px solid rgba(30, 58, 138, 0.4);
+		box-shadow: 0 20px 40px -20px rgba(11, 37, 69, 0.5);
+	}
+
+	.core-stat {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background: #ffffff;
+		color: var(--clr-heading);
+		border-radius: var(--radius-inner);
+		padding: 24px;
+		border: 1px solid rgba(219, 234, 254, 0.6);
+		box-shadow: 0 20px 30px -22px rgba(11, 37, 69, 0.45);
+	}
+
+	.core-stat .panel-headline {
+		margin-top: 10px;
+		font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.625rem);
+	}
+
+	.core-stat .rule {
+		margin-top: 10px;
+	}
+
+	.core-stat .panel-copy {
+		margin-top: 10px;
+		font-size: 0.8125rem;
+		line-height: 1.55;
+	}
+
+	/* Panel: Cómo trabajamos */
+	.panel-commit {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		padding: 28px;
+		background: #ffffff;
+		border: 1px solid rgba(203, 213, 225, 0.8);
+		box-shadow: 0 1px 2px rgba(11, 37, 69, 0.04);
+	}
+
+	.commit-note {
+		margin-top: 12px;
+		font-size: 0.8125rem;
+		line-height: 1.55;
+		color: var(--clr-slate);
+	}
+
+	.milestones {
+		list-style: none;
+		display: grid;
+		margin: auto 0;
+		padding: 0;
+	}
+
+	.milestone {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 16px;
+		align-items: baseline;
+		padding: 14px 0;
+		border-top: 1px solid #f1f5f9;
+	}
+
+	.milestone:first-child {
+		border-top: 0;
+		padding-top: 0;
+	}
+
+	.milestone-value {
+		font-family: var(--font-display);
+		font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.5rem);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		color: var(--clr-heading);
+	}
+
+	.milestone-label {
+		font-size: 0.8125rem;
+		line-height: 1.5;
+		color: var(--clr-slate);
+	}
+
+	.commit-foot {
+		padding-top: 16px;
+		border-top: 1px solid #f1f5f9;
+		font-family: var(--font-display);
+		font-size: 0.6875rem;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--clr-slate);
+	}
+
+	/* Columna derecha */
+	.panel-col {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.panel-speed {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		padding: 28px;
+		color: #ffffff;
+		background: linear-gradient(150deg, #0d5a99 0%, var(--clr-deep) 60%, var(--clr-abyss) 100%);
+		border: 1px solid rgba(147, 197, 253, 0.3);
+		box-shadow: 0 16px 32px -20px rgba(0, 162, 253, 0.6);
+		transition: transform 200ms var(--ease-out);
+	}
+
+	.panel-cover {
+		padding: 24px;
+		color: #ffffff;
+		background: var(--clr-abyss);
+		border: 1px solid rgba(30, 41, 59, 0.8);
+		box-shadow: 0 10px 24px -16px rgba(0, 16, 38, 0.7);
+		transition: transform 200ms var(--ease-out);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.panel-speed:hover,
+		.panel-cover:hover {
+			transform: translateY(-4px);
+		}
+	}
+
+	.cover-cities {
+		margin-top: 10px;
+		font-family: var(--font-display);
+		font-size: 0.9375rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		color: #ffffff;
+	}
+
+	.cover-mode {
+		margin-top: 4px;
+		font-size: 0.75rem;
+		line-height: 1.5;
+		color: #94a3b8;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.panel-speed,
+		.panel-cover {
+			transition: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+		.panel-speed:hover,
+		.panel-cover:hover {
+			transform: none;
+		}
+	}
+</style>
