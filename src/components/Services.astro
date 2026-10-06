@@ -1,42 +1,36 @@
 <section class="services" id="servicios">
 	<div class="wrap">
-		<div class="intro">
+		<header class="head">
 			<h2>Servicios para hacer crecer tu marca</h2>
 			<p>Diseño moderno y tecnología estable, enfocados en resultados.</p>
-		</div>
+		</header>
 
-		<div class="list" data-reveal>
-			<article class="row" id="servicios-web">
+		<div class="bento" data-reveal>
+			<article class="tile tile-lg" id="servicios-web">
 				<h3>Desarrollo web</h3>
-				<div>
-					<p>
-						Sitios corporativos y páginas de venta rápidas, pensadas para convertir visitas en clientes
-						desde el celular.
-					</p>
-					<span class="win">Rápido, moderno y vendedor</span>
-				</div>
+				<p>
+					Sitios corporativos y páginas de venta rápidas, pensadas para convertir visitas en clientes desde
+					el celular.
+				</p>
+				<span class="win">Rápido, moderno y vendedor</span>
 			</article>
 
-			<article class="row" id="servicios-redes">
+			<article class="tile" id="servicios-redes">
 				<h3>Manejo de redes</h3>
-				<div>
-					<p>
-						Estrategia de contenido, diseño gráfico y gestión activa para posicionar tu marca y generar
-						prospectos.
-					</p>
-					<span class="win">Presencia constante y profesional</span>
-				</div>
+				<p>
+					Estrategia de contenido, diseño gráfico y gestión activa para posicionar tu marca y generar
+					prospectos.
+				</p>
+				<span class="win">Presencia constante y profesional</span>
 			</article>
 
-			<article class="row" id="servicios-sistemas">
+			<article class="tile" id="servicios-sistemas">
 				<h3>Sistemas a la medida</h3>
-				<div>
-					<p>
-						Paneles de control, portales para clientes y automatizaciones hechas según la operación real
-						de tu empresa.
-					</p>
-					<span class="win">Ahorro de tiempo y cero errores</span>
-				</div>
+				<p>
+					Paneles de control, portales para clientes y automatizaciones hechas según la operación real de
+					tu empresa.
+				</p>
+				<span class="win">Ahorro de tiempo y cero errores</span>
 			</article>
 		</div>
 	</div>
@@ -58,29 +52,21 @@
 		max-width: 1180px;
 		margin: 0 auto;
 		padding: 72px 24px;
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 40px;
 	}
 
-	@media (min-width: 901px) {
+	@media (min-width: 641px) {
 		.wrap {
-			grid-template-columns: 0.8fr 1.2fr;
-			gap: 72px;
 			padding: 112px 24px;
 		}
 	}
 
-	.intro {
-		position: static;
-	}
-
-	@media (min-width: 901px) {
-		.intro {
-			position: sticky;
-			top: 48px;
-			align-self: start;
-		}
+	.head {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 40px 56px;
+		flex-wrap: wrap;
+		margin-bottom: 48px;
 	}
 
 	h2 {
@@ -91,60 +77,87 @@
 		color: var(--text);
 	}
 
-	.intro p {
+	.head p {
 		font-size: 1.1rem;
 		line-height: 1.55;
 		color: var(--muted);
-		margin: 20px 0 0;
+		margin: 0;
 		max-width: 30ch;
 	}
 
-	.list {
-		border-top: 1px solid var(--line);
-	}
-
-	.row {
+	.bento {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: 12px;
-		padding: 28px 0;
-		border-bottom: 1px solid var(--line);
+		grid-template-columns: 1fr 1fr;
+		gap: 16px;
 	}
 
-	@media (min-width: 901px) {
-		.row {
-			grid-template-columns: 0.9fr 1.1fr;
-			gap: 40px;
-			padding: 36px 0;
+	@media (min-width: 861px) {
+		.bento {
+			grid-template-columns: 1.1fr 1fr;
+			grid-auto-rows: 1fr;
+			gap: 20px;
+		}
+	}
+
+	.tile {
+		display: flex;
+		flex-direction: column;
+		background: #ffffff;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-panel);
+		padding: 28px;
+		box-shadow: 0 24px 48px -44px rgba(10, 42, 102, 0.4);
+	}
+
+	.tile-lg {
+		grid-column: 1 / -1;
+	}
+
+	@media (min-width: 861px) {
+		.tile-lg {
+			grid-column: 1;
+			grid-row: span 2;
 		}
 	}
 
 	h3 {
-		font: 600 1.5rem/1.15 'Sora', sans-serif;
+		font: 600 1.4rem/1.15 'Sora', sans-serif;
 		letter-spacing: -0.025em;
 		margin: 0;
 		color: var(--text);
 	}
 
-	.row p {
-		margin: 0;
+	.tile-lg h3 {
+		font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+	}
+
+	.tile p {
+		margin: 12px 0 0;
 		font-size: 1.02rem;
 		line-height: 1.6;
 		color: var(--muted);
-		max-width: 44ch;
+		max-width: 40ch;
 	}
 
 	.win {
 		display: flex;
 		align-items: center;
 		gap: 10px;
-		margin-top: 18px;
+		margin-top: 20px;
+		padding-top: 16px;
+		border-top: 1px solid var(--line);
 		font-weight: 500;
 		font-size: 0.95rem;
 		color: var(--text);
 	}
 
-.win::before {
+	@media (min-width: 861px) {
+		.tile .win {
+			margin-top: auto;
+		}
+	}
+
+	.win::before {
 		content: '';
 		width: 8px;
 		height: 8px;
@@ -153,19 +166,21 @@
 		flex: none;
 	}
 
-	@media (max-width: 480px) {
-		.wrap {
-			padding: 64px 24px;
-			gap: 32px;
+	@media (max-width: 640px) {
+		.tile {
+			padding: 22px;
 		}
 
-		.row {
-			padding: 24px 0;
+		.tile h3 {
+			font-size: 1.25rem;
 		}
 
-		.win {
-			margin-top: 16px;
+		.tile-lg h3 {
+			font-size: 1.5rem;
+		}
+
+		.tile p {
+			font-size: 0.95rem;
 		}
 	}
-}
 </style>
