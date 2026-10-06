@@ -1,25 +1,21 @@
 ---
-import { Icon } from 'astro-icon/components';
 import WhatsAppIcon from './WhatsAppIcon.astro';
 import logoUrl from '../../logo.png';
 
 const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero%20cotizar%20un%20proyecto';
 
 const navLinks = [
-  { href: '#servicios', label: 'Servicios' },
-  { href: '#portafolio', label: 'Portafolio' },
-  { href: '#contacto', label: 'Contacto' },
+	{ href: '#servicios', label: 'Servicios' },
+	{ href: '#portafolio', label: 'Portafolio' },
+	{ href: '#contacto', label: 'Contacto' },
 ];
 ---
 
-<header class="hero-frame">
-	<div class="hero-sky" id="inicio">
-		<div class="clouds clouds-back" aria-hidden="true"></div>
-		<div class="clouds clouds-front" aria-hidden="true"></div>
-
+<header class="hero" id="inicio">
+	<div class="hero-inner">
 		<nav class="nav" aria-label="Navegación principal">
 			<a class="nav-logo" href="#inicio" title="Space Creative" aria-label="Space Creative, ir al inicio">
-				<img class="logo" src={logoUrl.src} alt="Logo de Space Creative" width="139" height="52" />
+				<span class="logo" style={`--logo-src: url(${logoUrl.src})`}></span>
 			</a>
 
 			<ul class="nav-links">
@@ -38,162 +34,116 @@ const navLinks = [
 			</a>
 		</nav>
 
-		<div class="hero-content">
-			<h1 class="hero-title hero-animate">
-				Impulsamos tu negocio en el mundo digital con desarrollo web y soluciones a la medida
-			</h1>
+		<div class="hero-grid">
+			<div class="hero-copy">
+				<h1 class="hero-title in">Desarrollo web a la medida de tu negocio</h1>
 
-			<p class="hero-sub hero-animate">
-				Diseñamos sitios web profesionales, sistemas eficientes y estrategias de redes sociales que atraen clientes reales para tu empresa en Honduras y la región.
-			</p>
+				<p class="hero-lead in d1">
+					Sitios y plataformas pensados para vender y captar clientes reales.
+				</p>
 
-			<div class="hero-actions hero-animate">
-				<a class="btn btn-primary" href={waLink} target="_blank" rel="noopener noreferrer">
+				<div class="hero-actions in d2">
+					<a class="btn btn-primary" href={waLink} target="_blank" rel="noopener noreferrer">
+						<WhatsAppIcon size={18} />
+						<span>Cotiza tu proyecto</span>
+					</a>
+					<a class="text-link" href="#servicios">Ver servicios</a>
+				</div>
+			</div>
+
+			<div class="stage in d3" aria-hidden="true">
+				<div class="browser">
+					<div class="bar"><span class="url"></span></div>
+					<div class="page">
+						<span class="s s-h"></span>
+						<span class="s s-w"></span>
+						<span class="s s-n"></span>
+						<span class="pill"></span>
+						<span class="tiles">
+							<i></i>
+							<i></i>
+							<i></i>
+						</span>
+					</div>
+				</div>
+
+				<div class="chip">
 					<WhatsAppIcon size={20} />
-					<span>Cotiza tu proyecto</span>
-				</a>
-				<a class="btn btn-ghost" href="#servicios">
-					<span>Ver nuestros servicios</span>
-					<Icon name="hugeicons:chevron-down" width="16" height="16" aria-hidden="true" />
-				</a>
+					<span>
+						<strong>Nueva cotización</strong>
+						desde tu sitio web
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>
 </header>
 
 <style>
-	.hero-frame {
-		padding: 12px;
-		background: #ffffff;
-	}
-
-	@media (min-width: 640px) {
-		.hero-frame {
-			padding: 20px;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.hero-frame {
-			padding: 24px;
-		}
-	}
-
-	.hero-sky {
+	.hero {
 		position: relative;
-		border-radius: var(--radius-card);
-		border: 1px solid rgba(191, 219, 254, 0.4);
 		overflow: hidden;
-		box-shadow: 0 25px 50px -25px rgba(11, 37, 69, 0.55);
-		background: radial-gradient(circle at 50% 18%, #0090e3 0%, #007ac9 45%, #0b2545 88%, #001026 100%);
-		min-height: calc(100dvh - 48px);
-		display: flex;
-		flex-direction: column;
+		background: #ffffff;
+		border-bottom: 1px solid var(--clr-line);
+	}
+
+	.hero::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background:
+			radial-gradient(58% 62% at 86% 16%, rgba(0, 162, 253, 0.09), transparent 72%),
+			linear-gradient(180deg, #ffffff 0%, #ffffff 58%, #f5f8ff 100%);
+	}
+
+	.hero-inner {
+		position: relative;
+		z-index: var(--z-content);
+		max-width: 80rem;
+		margin: 0 auto;
+		padding: 0 16px;
 	}
 
 	@media (min-width: 640px) {
-		.hero-sky {
-			min-height: calc(100dvh - 64px);
+		.hero-inner {
+			padding: 0 24px;
 		}
 	}
 
 	@media (min-width: 1024px) {
-		.hero-sky {
-			min-height: calc(100dvh - 72px);
-		}
-	}
-
-	.clouds {
-		position: absolute;
-		inset: -6% -10%;
-		pointer-events: none;
-		background-repeat: no-repeat;
-		will-change: transform;
-		background-image:
-			radial-gradient(ellipse 60% 40% at 50% 96%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.72) 40%, rgba(255, 255, 255, 0) 75%),
-			radial-gradient(ellipse 35% 25% at 15% 82%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 70%),
-			radial-gradient(ellipse 40% 30% at 85% 78%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%),
-			radial-gradient(ellipse 70% 35% at 50% 68%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 80%);
-	}
-
-	.clouds-back {
-		opacity: 0.75;
-		animation: cloudDrift 90s linear infinite alternate;
-	}
-
-	.clouds-front {
-		animation: cloudDrift 55s linear infinite alternate-reverse;
-	}
-
-	@keyframes cloudDrift {
-		from {
-			transform: translate3d(-2.5%, 0.5%, 0);
-		}
-		to {
-			transform: translate3d(2.5%, -0.5%, 0);
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.clouds {
-			animation: none !important;
+		.hero-inner {
+			padding: 0 32px;
 		}
 	}
 
 	.nav {
-		position: relative;
-		z-index: var(--z-nav);
-		max-width: 80rem;
-		margin: 0 auto;
-		width: 100%;
-		padding: 16px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: 24px;
-	}
-
-	@media (min-width: 640px) {
-		.nav {
-			padding: 20px 32px;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.nav {
-			padding: 16px 48px;
-		}
+		height: 76px;
 	}
 
 	.nav-logo {
 		display: flex;
 		align-items: center;
-		text-decoration: none;
 	}
 
 	.logo {
-		height: 48px;
-		width: auto;
 		display: block;
-		object-fit: contain;
-		transition: transform 160ms var(--ease-out);
+		--logo-h: 40px;
+		height: var(--logo-h);
+		width: calc(var(--logo-h) * 3.737);
+		background-color: var(--clr-heading);
+		-webkit-mask: var(--logo-src) center / contain no-repeat;
+		mask: var(--logo-src) center / contain no-repeat;
+		transition: opacity 160ms ease;
 	}
 
 	@media (min-width: 640px) {
 		.logo {
-			height: 58px;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.logo {
-			height: 68px;
-		}
-	}
-
-	@media (hover: hover) and (pointer: fine) {
-		.nav-logo:hover .logo {
-			transform: scale(1.04);
+			--logo-h: 46px;
 		}
 	}
 
@@ -201,7 +151,7 @@ const navLinks = [
 		display: none;
 		list-style: none;
 		align-items: center;
-		gap: 28px;
+		gap: 32px;
 	}
 
 	@media (min-width: 1024px) {
@@ -211,35 +161,74 @@ const navLinks = [
 	}
 
 	.nav-links a {
-		font-family: var(--font-display);
-		font-size: 0.75rem;
-		font-weight: 600;
-		letter-spacing: 0.09em;
-		text-transform: uppercase;
-		color: rgba(255, 255, 255, 0.85);
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		color: var(--clr-slate);
 		text-decoration: none;
 		transition: color 160ms ease;
 	}
 
-	.nav-links a:hover {
-		color: #ffffff;
+	.hero-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: center;
+		gap: 48px;
+		padding: 32px 0 72px;
+	}
+
+	@media (min-width: 901px) {
+		.hero-grid {
+			grid-template-columns: 1.05fr 0.95fr;
+			gap: 56px;
+			min-height: calc(100vh - 76px);
+			min-height: calc(100svh - 76px);
+			padding: 24px 0 72px;
+		}
+	}
+
+	.hero-title {
+		max-width: 14ch;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(2.1rem, 5.4vw, 4.4rem);
+		line-height: 1.02;
+		letter-spacing: -0.03em;
+		color: var(--clr-heading);
+	}
+
+	.hero-lead {
+		max-width: 34ch;
+		margin-top: 24px;
+		font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+		line-height: 1.55;
+		color: var(--clr-body);
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 28px;
+		margin-top: 36px;
 	}
 
 	.btn {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 10px;
+		gap: 9px;
 		border-radius: var(--radius-pill);
 		font-family: var(--font-display);
 		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
+		font-size: 0.9375rem;
 		text-decoration: none;
 		color: #ffffff;
 		cursor: pointer;
 		user-select: none;
-		transition: transform 160ms var(--ease-out), background-color 160ms ease, border-color 160ms ease;
+		transition:
+			transform 160ms var(--ease-out),
+			background-color 160ms ease;
 	}
 
 	.btn:active {
@@ -247,132 +236,228 @@ const navLinks = [
 	}
 
 	.btn:focus-visible {
-		outline: 3px solid rgba(255, 255, 255, 0.6);
+		outline: 3px solid var(--clr-cerulean-ink);
 		outline-offset: 3px;
 	}
 
 	.btn-nav {
-		font-size: 0.75rem;
-		padding: 10px 18px;
+		font-size: 0.8125rem;
+		padding: 11px 18px;
 		background: var(--clr-wa);
-		border: 1px solid rgba(255, 255, 255, 0.35);
-		gap: 8px;
 	}
 
-	.btn-nav:hover {
-		background: var(--clr-wa-hover);
+	.btn-primary {
+		padding: 15px 26px;
+		background: var(--clr-wa);
+		box-shadow: 0 14px 26px -14px rgba(20, 107, 66, 0.7);
+	}
+
+	.text-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding-bottom: 3px;
+		border-bottom: 1px solid rgba(11, 37, 69, 0.3);
+		color: var(--clr-heading);
+		font-family: var(--font-display);
+		font-size: 0.9375rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: border-color 160ms ease;
+	}
+
+	.text-link:focus-visible {
+		outline: 2px solid var(--clr-cerulean-ink);
+		outline-offset: 4px;
+		border-radius: 4px;
+	}
+
+	.stage {
+		position: relative;
+		max-width: 560px;
+	}
+
+	.browser {
+		position: relative;
+		background: #ffffff;
+		border: 1px solid rgba(203, 213, 225, 0.9);
+		border-radius: var(--radius-panel);
+		overflow: hidden;
+		box-shadow: 0 40px 70px -36px rgba(11, 37, 69, 0.5);
+	}
+
+	.bar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 42px;
+		border-bottom: 1px solid #e6ebf4;
+		background: #f8fafd;
+	}
+
+	.url {
+		display: block;
+		width: 44%;
+		height: 18px;
+		border-radius: var(--radius-pill);
+		background: #eef2f9;
+	}
+
+	.page {
+		display: grid;
+		gap: 14px;
+		padding: 26px;
+	}
+
+	.s {
+		display: block;
+		height: 12px;
+		border-radius: 6px;
+		background: #e6ebf4;
+	}
+
+	.s-h {
+		height: 20px;
+		width: 62%;
+		background: var(--clr-deep);
+	}
+
+	.s-w {
+		width: 84%;
+	}
+
+	.s-n {
+		width: 56%;
+	}
+
+	.pill {
+		display: block;
+		width: 116px;
+		height: 34px;
+		margin-top: 6px;
+		border-radius: var(--radius-pill);
+		background: var(--clr-wa);
+	}
+
+	.tiles {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 12px;
+		margin-top: 10px;
+	}
+
+	.tiles i {
+		display: block;
+		height: 92px;
+		border-radius: var(--radius-inner);
+		background: #eaf0ff;
+	}
+
+	.tiles i:nth-child(2) {
+		background: #d5e2ff;
+	}
+
+	.tiles i:nth-child(3) {
+		background: #f1f4fa;
+	}
+
+	.chip {
+		position: absolute;
+		right: -14px;
+		bottom: -22px;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 14px 18px;
+		border-radius: var(--radius-inner);
+		background: var(--clr-wa);
+		color: #ffffff;
+		font-size: 0.92rem;
+		line-height: 1.3;
+		box-shadow: 0 18px 36px -16px rgba(11, 37, 69, 0.55);
+	}
+
+	.chip strong {
+		display: block;
+		font-family: var(--font-display);
+		font-weight: 700;
+	}
+
+	@media (max-width: 900px) {
+		.stage {
+			max-width: 100%;
+		}
+
+		.chip {
+			right: 8px;
+		}
 	}
 
 	@media (max-width: 639px) {
 		.btn-nav {
-			padding: 10px 14px;
+			padding: 11px;
 		}
 
-		.btn-nav [data-icon] + span {
+		.btn-nav span {
 			display: none;
 		}
 	}
 
-	.hero-content {
-		position: relative;
-		z-index: var(--z-content);
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		max-width: 88rem;
-		width: 100%;
-		margin: 0 auto;
-		padding: 64px 16px 96px;
-	}
+	@media (hover: hover) and (pointer: fine) {
+		.nav-logo:hover .logo {
+			opacity: 0.72;
+		}
 
-	@media (min-width: 640px) {
-		.hero-content {
-			padding: 96px 24px 128px;
+		.nav-links a:hover {
+			color: var(--clr-heading);
+		}
+
+		.btn:hover {
+			background: var(--clr-wa-hover);
+		}
+
+		.text-link:hover {
+			border-color: var(--clr-heading);
 		}
 	}
 
-	@media (min-width: 1024px) {
-		.hero-content {
-			padding: 112px 32px 144px;
-		}
+	.in {
+		animation: heroUp 420ms var(--ease-out) both;
 	}
 
-	.hero-title {
-		max-width: 100%;
-		font-family: var(--font-display);
-		font-weight: 800;
-		font-size: clamp(1.875rem, 3.8vw, 3.4rem);
-		line-height: 1.12;
-		letter-spacing: -0.03em;
-		color: #ffffff;
-		text-shadow: 0 2px 12px rgba(0, 16, 38, 0.35);
+	.d1 {
+		animation-delay: 60ms;
 	}
 
-	.hero-sub {
-		max-width: 36rem;
-		margin-top: 20px;
-		font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
-		line-height: 1.65;
-		color: #e6f4ff;
+	.d2 {
+		animation-delay: 120ms;
 	}
 
-	.hero-actions {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		gap: 16px;
-		margin-top: 32px;
-	}
-
-	@media (min-width: 640px) {
-		.hero-actions {
-			margin-top: 40px;
-			gap: 20px;
-		}
-	}
-
-	.btn-primary {
-		font-size: 0.8125rem;
-		padding: 14px 28px;
-		background: var(--clr-wa);
-		box-shadow: 0 12px 24px -8px rgba(16, 96, 60, 0.55);
-	}
-
-	.btn-primary:hover {
-		background: var(--clr-wa-hover);
-		transform: translateY(-1px);
-	}
-
-	.btn-ghost {
-		font-size: 0.8125rem;
-		font-weight: 600;
-		padding: 14px 28px;
-		background: rgba(255, 255, 255, 0.1);
-		border: 1px solid rgba(255, 255, 255, 0.3);
-	}
-
-	.btn-ghost:hover {
-		background: rgba(255, 255, 255, 0.2);
-	}
-
-	.hero-animate {
-		opacity: 0;
-		animation: heroFadeUp 600ms var(--ease-out) forwards;
-	}
-
-	.hero-title.hero-animate {
-		animation-delay: 80ms;
-	}
-
-	.hero-sub.hero-animate {
-		animation-delay: 140ms;
-	}
-
-	.hero-actions.hero-animate {
+	.d3 {
 		animation-delay: 200ms;
+	}
+
+	@keyframes heroUp {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.in {
+			animation: none;
+		}
+
+		.logo,
+		.btn,
+		.nav-links a,
+		.text-link {
+			transition: none;
+		}
 	}
 </style>
