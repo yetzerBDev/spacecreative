@@ -3,11 +3,13 @@ import { Image } from 'astro:assets';
 import dantoni from '../logos/dantoni.png';
 import valtech from '../logos/valtech.png';
 import lexterra from '../logos/lexterra.png';
+import orthodent from '../logos/orthodent.png';
 
 const clients = [
 	{ name: 'Dantoni', logo: dantoni },
 	{ name: 'Valtech', logo: valtech },
 	{ name: 'Lexterra', logo: lexterra },
+	{ name: 'Orthodent', logo: orthodent },
 ];
 ---
 
@@ -29,8 +31,9 @@ const clients = [
 	.logo-strip {
 		position: relative;
 		z-index: 20;
-		background: var(--clr-surface-light);
-		border-bottom: 1px solid var(--clr-line);
+		background: #f4f7ff;
+		border-top: 1px solid rgba(10, 42, 102, 0.14);
+		border-bottom: 1px solid rgba(10, 42, 102, 0.14);
 		padding: 40px 0;
 	}
 
@@ -45,12 +48,10 @@ const clients = [
 		margin: 0 auto 28px;
 		padding: 0 16px;
 		text-align: center;
-		font-family: var(--font-display);
-		font-size: 0.6875rem;
-		font-weight: 600;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: var(--clr-slate);
+		font-family: 'DM Sans', system-ui, sans-serif;
+		font-size: 0.9375rem;
+		font-weight: 400;
+		color: #4a5a8c;
 	}
 
 	.logo-row {
