@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Servicios | Space Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F8FC; --ink:#0A1B3F; --muted:#56637F; --line:#D8DFEE; --dot:#22B866;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#071533;--ink:#F4F7FF;--muted:#A9B8DB;--line:rgba(255,255,255,.14);--dot:#2BD576}}
+:root[data-theme="dark"]{--bg:#071533;--ink:#F4F7FF;--muted:#A9B8DB;--line:rgba(255,255,255,.14);--dot:#2BD576}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+
+section{max-width:1180px;margin:0 auto;padding:112px 24px;display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+.intro{position:sticky;top:48px}
+h2{font:600 clamp(2rem,3.6vw,3rem)/1.06 "Sora",sans-serif;letter-spacing:-.035em;margin:0;max-width:12ch}
+.intro p{font-size:1.1rem;line-height:1.55;color:var(--muted);margin:20px 0 0;max-width:30ch}
+
+.list{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;padding:36px 0;border-bottom:1px solid var(--line)}
+h3{font:600 1.5rem/1.15 "Sora",sans-serif;letter-spacing:-.025em;margin:0}
+.row p{margin:0;font-size:1.02rem;line-height:1.6;color:var(--muted);max-width:44ch}
+.win{display:flex;align-items:center;gap:10px;margin-top:18px;font-weight:500;font-size:.95rem;color:var(--ink)}
+.win::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dot);flex:none}
+
+@media (max-width:900px){
+  section{grid-template-columns:1fr;gap:40px;padding:72px 24px}
+  .intro{position:static}
+  .row{grid-template-columns:1fr;gap:12px;padding:28px 0}
+}
+</style>
+</head>
+<body>
+<section id="servicios">
+  <div class="intro">
+    <h2>Servicios para hacer crecer tu marca</h2>
+    <p>Diseño moderno y tecnología estable, enfocados en resultados.</p>
+  </div>
+
+  <div class="list">
+    <article class="row">
+      <h3>Desarrollo web</h3>
+      <div>
+        <p>Sitios corporativos y páginas de venta rápidas, pensadas para convertir visitas en clientes desde el celular.</p>
+        <span class="win">Rápido, moderno y vendedor</span>
+      </div>
+    </article>
+    <article class="row">
+      <h3>Manejo de redes</h3>
+      <div>
+        <p>Estrategia de contenido, diseño gráfico y gestión activa para posicionar tu marca y generar prospectos.</p>
+        <span class="win">Presencia constante y profesional</span>
+      </div>
+    </article>
+    <article class="row">
+      <h3>Sistemas a la medida</h3>
+      <div>
+        <p>Paneles de control, portales para clientes y automatizaciones hechas según la operación real de tu empresa.</p>
+        <span class="win">Ahorro de tiempo y cero errores</span>
+      </div>
+    </article>
+  </div>
+</section>
+</body>
+</html>
