@@ -1,4 +1,6 @@
 ---
+import logoUrl from '../../logo.png';
+
 const waLink =
 	'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero%20cotizar%20un%20proyecto';
 ---
@@ -6,7 +8,9 @@ const waLink =
 <header id="inicio" class="frame">
 	<div class="wrap">
 		<nav aria-label="Navegación principal">
-			<a class="brand" href="#inicio"><span class="mark" aria-hidden="true"><i></i></span>Space Creative</a>
+			<a class="brand" href="#inicio" aria-label="Space Creative, ir al inicio">
+				<span class="logo" style={`--logo-src: url(${logoUrl.src})`}></span>
+			</a>
 			<div class="links">
 				<a href="#servicios">Servicios</a>
 				<a href="#nosotros">Por qué nosotros</a>
@@ -91,26 +95,15 @@ const waLink =
 	.brand {
 		display: flex;
 		align-items: center;
-		gap: 10px;
-		font: 600 1.05rem 'Sora', sans-serif;
-		letter-spacing: -0.01em;
 	}
 
-	.mark {
-		width: 30px;
+	.logo {
+		display: block;
 		height: 30px;
-		border-radius: 9px;
-		background: var(--text);
-		display: grid;
-		place-items: center;
-	}
-
-	.mark i {
-		width: 12px;
-		height: 12px;
-		border-radius: 50%;
-		background: var(--surface);
-		box-shadow: 7px -7px 0 -3px var(--cta);
+		width: calc(30px * 3.737);
+		background-color: var(--text);
+		-webkit-mask: var(--logo-src) center / contain no-repeat;
+		mask: var(--logo-src) center / contain no-repeat;
 	}
 
 	.links {
