@@ -114,7 +114,22 @@ const waLink =
 	}
 
 	.links a {
+		position: relative;
 		transition: color 0.16s ease-out;
+	}
+
+	.links a::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -5px;
+		height: 2px;
+		border-radius: 1px;
+		background: currentColor;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.2s var(--ease);
 	}
 
 	.hero {
@@ -295,6 +310,10 @@ const waLink =
 			color: var(--text);
 		}
 
+		.links a:hover::after {
+			transform: scaleX(1);
+		}
+
 		.btn:hover {
 			filter: brightness(1.06);
 		}
@@ -335,6 +354,10 @@ const waLink =
 	@media (prefers-reduced-motion: reduce) {
 		.in {
 			animation: none;
+		}
+
+		.links a::after {
+			display: none;
 		}
 
 		.btn,

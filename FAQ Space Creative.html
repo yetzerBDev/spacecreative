@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Preguntas frecuentes | Space Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F8FC; --ink:#0A1B3F; --muted:#56637F; --line:#D8DFEE; --cta:#2BD576; --cta-ink:#04210F;
+  --ease:cubic-bezier(.23,1,.32,1);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#071533;--ink:#F4F7FF;--muted:#A9B8DB;--line:rgba(255,255,255,.14)}}
+:root[data-theme="dark"]{--bg:#071533;--ink:#F4F7FF;--muted:#A9B8DB;--line:rgba(255,255,255,.14)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+
+section{max-width:1180px;margin:0 auto;padding:112px 24px;display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+.intro{position:sticky;top:48px}
+h2{font:600 clamp(2rem,3.6vw,3rem)/1.06 "Sora",sans-serif;letter-spacing:-.035em;margin:0;max-width:11ch}
+.intro p{font-size:1.1rem;line-height:1.55;color:var(--muted);margin:20px 0 32px;max-width:28ch}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--cta);color:var(--cta-ink);font-weight:500;padding:14px 22px;border-radius:999px;transition:transform .16s var(--ease),filter .16s ease-out}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:scale(.97)}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:8px}
+
+.list{border-top:1px solid var(--line)}
+.q{border-bottom:1px solid var(--line)}
+.q h3{margin:0}
+.q button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 0;font:600 1.25rem/1.3 "Sora",sans-serif;letter-spacing:-.02em}
+.q button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.ico{position:relative;width:16px;height:16px;flex:none}
+.ico::before,.ico::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:currentColor;border-radius:1px;transition:transform .2s var(--ease)}
+.ico::after{transform:rotate(90deg)}
+.q.open .ico::after{transform:rotate(0)}
+.a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s var(--ease)}
+.a>div{overflow:hidden;visibility:hidden;transition:visibility .28s}
+.a p{margin:0;padding:0 40px 28px 0;font-size:1.05rem;line-height:1.65;color:var(--muted);max-width:56ch}
+.q.open .a{grid-template-rows:1fr}
+.q.open .a>div{visibility:visible}
+
+@media (prefers-reduced-motion:reduce){.a,.a>div,.ico::before,.ico::after,.btn{transition:none}}
+@media (max-width:900px){
+  section{grid-template-columns:1fr;gap:40px;padding:72px 24px}
+  .intro{position:static}
+  .intro p{margin-bottom:24px}
+}
+</style>
+</head>
+<body>
+<section id="faq">
+  <div class="intro">
+    <h2>Preguntas frecuentes</h2>
+    <p>Lo que más nos preguntan antes de empezar.</p>
+    <a class="btn" href="https://wa.me/" target="_blank" rel="noopener">¿Tienes otra duda? Escríbenos</a>
+  </div>
+
+  <div class="list" id="list">
+    <div class="q open">
+      <h3><button type="button" aria-expanded="true" aria-controls="a1" id="q1">¿Cuánto tarda mi proyecto?<span class="ico" aria-hidden="true"></span></button></h3>
+      <div class="a" id="a1" role="region" aria-labelledby="q1"><div><p>Depende del alcance. Antes de empezar fijamos por escrito los entregables y las fechas, para que sepas qué recibes y cuándo.</p></div></div>
+    </div>
+    <div class="q">
+      <h3><button type="button" aria-expanded="false" aria-controls="a2" id="q2">¿Cuánto cuesta?<span class="ico" aria-hidden="true"></span></button></h3>
+      <div class="a" id="a2" role="region" aria-labelledby="q2"><div><p>Te damos un presupuesto exacto por escrito antes de empezar. El pago es por etapas: 50% de anticipo, 30% al validar el prototipo y 20% en la entrega.</p></div></div>
+    </div>
+    <div class="q">
+      <h3><button type="button" aria-expanded="false" aria-controls="a3" id="q3">¿Qué pasa si quiero cambios?<span class="ico" aria-hidden="true"></span></button></h3>
+      <div class="a" id="a3" role="region" aria-labelledby="q3"><div><p>Pruebas un prototipo navegable antes de programar la versión final, así que los ajustes se hacen ahí, cuando es más rápido. Lo que queda fuera del alcance acordado se cotiza aparte.</p></div></div>
+    </div>
+    <div class="q">
+      <h3><button type="button" aria-expanded="false" aria-controls="a4" id="q4">¿Quién es el dueño del sitio?<span class="ico" aria-hidden="true"></span></button></h3>
+      <div class="a" id="a4" role="region" aria-labelledby="q4"><div><p>Tú. El sitio, el dominio y el contenido quedan a tu nombre al completar el pago final.</p></div></div>
+    </div>
+    <div class="q">
+      <h3><button type="button" aria-expanded="false" aria-controls="a5" id="q5">¿Hay soporte después del lanzamiento?<span class="ico" aria-hidden="true"></span></button></h3>
+      <div class="a" id="a5" role="region" aria-labelledby="q5"><div><p>Sí. Incluimos garantía y soporte, y te capacitamos para que puedas operar tu solución de forma autónoma.</p></div></div>
+    </div>
+  </div>
+</section>
+<script>
+document.getElementById('list').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  var q=b.closest('.q'), open=q.classList.toggle('open');
+  b.setAttribute('aria-expanded',open);
+});
+</script>
+</body>
+</html>

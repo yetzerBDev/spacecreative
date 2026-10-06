@@ -7,6 +7,7 @@ const navLinks = [
 	{ href: '#nosotros', label: 'Por qué nosotros' },
 	{ href: '#servicios', label: 'Servicios' },
 	{ href: '#proceso', label: 'Metodología' },
+	{ href: '#contacto', label: 'Contacto' },
 ];
 
 const serviceLinks = [
@@ -19,7 +20,7 @@ const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero
 ---
 
 <footer class="footer">
-	<div class="footer-inner">
+	<div class="footer-inner" data-reveal>
 		<div class="footer-grid">
 			<div class="brand-col">
 				<a class="brand-link" href="#inicio" aria-label="Space Creative, ir al inicio">
@@ -68,17 +69,10 @@ const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero
 <style>
 	.footer {
 		position: relative;
-		overflow: hidden;
 		padding: 72px 0 40px;
-		background: var(--clr-abyss);
-	}
-
-	.footer::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		background: radial-gradient(50% 55% at 88% 0%, rgba(0, 162, 253, 0.1), transparent 70%);
+		background: #f4f7ff;
+		color: #0a2a66;
+		font-family: 'DM Sans', system-ui, sans-serif;
 	}
 
 	@media (min-width: 640px) {
@@ -138,28 +132,24 @@ const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero
 	.brand-copy {
 		max-width: 26rem;
 		margin-top: 22px;
-		font-size: 0.8125rem;
+		font-size: 0.875rem;
 		line-height: 1.75;
-		color: #9aa8bd;
+		color: #4a5a8c;
 	}
 
 	.brand-tag {
 		margin-top: 20px;
-		font-family: var(--font-display);
-		font-size: 0.6875rem;
-		font-weight: 600;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: #7cc6ff;
+		font-family: 'Sora', sans-serif;
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: #4a5a8c;
 	}
 
 	.col-title {
-		font-family: var(--font-display);
-		font-size: 0.6875rem;
-		font-weight: 700;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: #ffffff;
+		font-family: 'Sora', sans-serif;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: #0a2a66;
 	}
 
 	.link-col ul {
@@ -172,15 +162,15 @@ const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero
 
 	.link-col a,
 	.sub-link {
-		font-size: 0.8125rem;
-		color: #9aa8bd;
+		font-size: 0.875rem;
+		color: #4a5a8c;
 		text-decoration: none;
 		transition: color 160ms ease;
 	}
 
 	.link-col a:hover,
 	.sub-link:hover {
-		color: #ffffff;
+		color: #0a2a66;
 	}
 
 	.link-col a:focus-visible,
@@ -188,35 +178,35 @@ const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero
 	.contact-link:focus-visible,
 	.wa-link:focus-visible,
 	.brand-link:focus-visible {
-		outline: 2px solid #7cc6ff;
+		outline: 2px solid #0a2a66;
 		outline-offset: 3px;
 		border-radius: 4px;
 	}
 
 	.contact-place {
 		margin-top: 20px;
-		font-size: 0.8125rem;
+		font-size: 0.875rem;
 		font-weight: 500;
-		color: #cbd6e4;
+		color: #0a2a66;
 	}
 
 	.contact-country {
 		margin-top: 4px;
-		font-size: 0.8125rem;
-		color: #9aa8bd;
+		font-size: 0.875rem;
+		color: #4a5a8c;
 	}
 
 	.contact-link {
 		display: inline-block;
 		margin-top: 14px;
-		font-size: 0.8125rem;
-		color: #9aa8bd;
+		font-size: 0.875rem;
+		color: #4a5a8c;
 		text-decoration: none;
 		transition: color 160ms ease;
 	}
 
 	.contact-link:hover {
-		color: #ffffff;
+		color: #0a2a66;
 	}
 
 	.wa-link {
@@ -225,35 +215,36 @@ const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero
 		gap: 9px;
 		margin-top: 18px;
 		padding: 9px 16px;
-		border: 1px solid rgba(148, 163, 184, 0.28);
+		border: 1px solid rgba(10, 42, 102, 0.18);
 		border-radius: var(--radius-pill);
-		background: rgba(255, 255, 255, 0.03);
-		font-family: var(--font-display);
-		font-size: 0.75rem;
-		font-weight: 700;
-		letter-spacing: 0.04em;
-		color: #e6eefb;
+		background: #ffffff;
+		font-family: 'Sora', sans-serif;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		color: #0a2a66;
 		text-decoration: none;
 		transition:
 			border-color 180ms ease,
-			background-color 180ms ease;
+			box-shadow 180ms ease;
 	}
 
 	.wa-link [data-icon] {
-		color: #4ade80;
+		color: #2bd576;
 	}
 
-	.wa-link:hover {
-		border-color: rgba(148, 163, 184, 0.55);
-		background: rgba(255, 255, 255, 0.07);
+	@media (hover: hover) and (pointer: fine) {
+		.wa-link:hover {
+			border-color: rgba(10, 42, 102, 0.4);
+			box-shadow: 0 14px 26px -18px rgba(10, 42, 102, 0.5);
+		}
 	}
 
 	.contact-note {
 		margin-top: 16px;
 		max-width: 18rem;
-		font-size: 0.75rem;
+		font-size: 0.8125rem;
 		line-height: 1.6;
-		color: #7f8ea8;
+		color: #55648a;
 	}
 
 	.sub-footer {
@@ -263,9 +254,9 @@ const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero
 		gap: 12px;
 		margin-top: 64px;
 		padding-top: 28px;
-		border-top: 1px solid rgba(148, 163, 184, 0.14);
-		font-size: 0.75rem;
-		color: #8b9bb4;
+		border-top: 1px solid rgba(10, 42, 102, 0.14);
+		font-size: 0.8125rem;
+		color: #4a5a8c;
 		text-align: center;
 	}
 

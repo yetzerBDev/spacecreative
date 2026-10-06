@@ -12,7 +12,7 @@ const projectTypes = [
 ---
 
 <section class="contact" id="contacto">
-	<div class="contact-inner">
+	<div class="contact-inner" data-reveal>
 		<h2 class="contact-title">Hagamos realidad tu próximo gran hito digital</h2>
 		<p class="contact-lede">
 			Cuéntanos tu meta y recibe una propuesta detallada en menos de 24 horas laborables.
@@ -65,12 +65,7 @@ const projectTypes = [
 					></textarea>
 				</div>
 
-				<button class="submit" type="submit">
-					<span>Enviar solicitud de cotización</span>
-					<span class="submit-arrow" aria-hidden="true">
-						<Icon name="hugeicons:arrow-right-01" size={14} />
-					</span>
-				</button>
+				<button class="submit" type="submit">Enviar solicitud de cotización</button>
 			</form>
 
 			<p class="form-note">
@@ -262,18 +257,6 @@ const projectTypes = [
 	.submit:focus-visible {
 		outline: 3px solid rgba(43, 213, 118, 0.5);
 		outline-offset: 3px;
-	}
-
-	.submit-arrow {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 24px;
-		height: 24px;
-		border-radius: var(--radius-pill);
-		background: var(--dot-ink);
-		color: var(--dot);
-		flex: none;
 	}
 
 	.form-note {

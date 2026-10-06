@@ -1,0 +1,300 @@
+---
+const waLink = 'https://wa.me/50493828622?text=Hola%20Space%20Creative,%20quiero%20cotizar%20un%20proyecto';
+---
+
+<section class="faq" id="faq">
+	<div class="wrap">
+		<div class="intro">
+			<h2>Preguntas frecuentes</h2>
+			<p>Lo que más nos preguntan antes de empezar.</p>
+			<a class="btn" href={waLink} target="_blank" rel="noopener noreferrer">
+				¿Tienes otra duda? Escríbenos
+			</a>
+		</div>
+
+		<div class="list" id="faq-list" data-reveal>
+			<div class="q open">
+				<h3>
+					<button type="button" aria-expanded="true" aria-controls="faq-a1" id="faq-q1">
+						¿Cuánto tarda mi proyecto?<span class="ico" aria-hidden="true"></span>
+					</button>
+				</h3>
+				<div class="a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+					<div>
+						<p>
+							Depende del alcance. Antes de empezar fijamos por escrito los entregables y las fechas,
+							para que sepas qué recibes y cuándo.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="q">
+				<h3>
+					<button type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+						¿Cuánto cuesta?<span class="ico" aria-hidden="true"></span>
+					</button>
+				</h3>
+				<div class="a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+					<div>
+						<p>
+							Te damos un presupuesto exacto por escrito antes de empezar. El pago es por etapas: 50%
+							de anticipo, 30% al validar el prototipo y 20% en la entrega.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="q">
+				<h3>
+					<button type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+						¿Qué pasa si quiero cambios?<span class="ico" aria-hidden="true"></span>
+					</button>
+				</h3>
+				<div class="a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+					<div>
+						<p>
+							Pruebas un prototipo navegable antes de programar la versión final, así que los ajustes
+							se hacen ahí, cuando es más rápido. Lo que queda fuera del alcance acordado se cotiza
+							aparte.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="q">
+				<h3>
+					<button type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+						¿Quién es el dueño del sitio?<span class="ico" aria-hidden="true"></span>
+					</button>
+				</h3>
+				<div class="a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+					<div>
+						<p>Tú. El sitio, el dominio y el contenido quedan a tu nombre al completar el pago final.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="q">
+				<h3>
+					<button type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+						¿Hay soporte después del lanzamiento?<span class="ico" aria-hidden="true"></span>
+					</button>
+				</h3>
+				<div class="a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+					<div>
+						<p>
+							Sí. Incluimos garantía y soporte, y te capacitamos para que puedas operar tu solución de
+							forma autónoma.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const faqList = document.getElementById('faq-list');
+
+	faqList.addEventListener('click', (event) => {
+		const button = event.target.closest('button');
+		if (!button) return;
+
+		const q = button.closest('.q');
+		const open = q.classList.toggle('open');
+		button.setAttribute('aria-expanded', String(open));
+	});
+</script>
+
+<style>
+	.faq {
+		--text: #0a2a66;
+		--muted: #4a5a8c;
+		--line: rgba(10, 42, 102, 0.14);
+		--cta: #2bd576;
+		--cta-ink: #04210f;
+		--ease: var(--ease-out);
+
+		background: #f4f7ff;
+		color: var(--text);
+		font-family: 'DM Sans', system-ui, sans-serif;
+	}
+
+	.wrap {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: 72px 24px;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 40px;
+		align-items: start;
+	}
+
+	@media (min-width: 901px) {
+		.wrap {
+			grid-template-columns: 0.8fr 1.2fr;
+			gap: 72px;
+			padding: 112px 24px;
+		}
+	}
+
+	.intro {
+		position: static;
+	}
+
+	@media (min-width: 901px) {
+		.intro {
+			position: sticky;
+			top: 48px;
+		}
+	}
+
+	h2 {
+		font: 600 clamp(2rem, 3.6vw, 3rem)/1.06 'Sora', sans-serif;
+		letter-spacing: -0.035em;
+		margin: 0;
+		max-width: 11ch;
+		color: var(--text);
+	}
+
+	.intro p {
+		font-size: 1.1rem;
+		line-height: 1.55;
+		color: var(--muted);
+		margin: 20px 0 32px;
+		max-width: 28ch;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		background: var(--cta);
+		color: var(--cta-ink);
+		font-weight: 500;
+		padding: 14px 22px;
+		border-radius: var(--radius-pill);
+		transition:
+			transform 0.16s var(--ease),
+			filter 0.16s ease-out;
+		font-family: inherit;
+		text-decoration: none;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.btn:hover {
+			filter: brightness(1.06);
+		}
+	}
+
+	.btn:active {
+		transform: scale(0.97);
+	}
+
+	.btn:focus-visible {
+		outline: 2px solid var(--text);
+		outline-offset: 3px;
+		border-radius: 8px;
+	}
+
+	.list {
+		border-top: 1px solid var(--line);
+	}
+
+	.q {
+		border-bottom: 1px solid var(--line);
+	}
+
+	.q h3 {
+		margin: 0;
+	}
+
+	.q button {
+		all: unset;
+		box-sizing: border-box;
+		cursor: pointer;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 24px;
+		padding: 26px 0;
+		font: 600 1.25rem/1.3 'Sora', sans-serif;
+		letter-spacing: -0.02em;
+		color: var(--text);
+	}
+
+	.q button:focus-visible {
+		outline: 2px solid currentColor;
+		outline-offset: 2px;
+	}
+
+	.ico {
+		position: relative;
+		width: 16px;
+		height: 16px;
+		flex: none;
+	}
+
+	.ico::before,
+	.ico::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		height: 2px;
+		margin-top: -1px;
+		background: currentColor;
+		border-radius: 1px;
+		transition: transform 0.2s var(--ease);
+	}
+
+	.ico::after {
+		transform: rotate(90deg);
+	}
+
+	.q.open .ico::after {
+		transform: rotate(0);
+	}
+
+	.a {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.28s var(--ease);
+	}
+
+	.a > div {
+		overflow: hidden;
+		visibility: hidden;
+		transition: visibility 0.28s;
+	}
+
+	.a p {
+		margin: 0;
+		padding: 0 40px 28px 0;
+		font-size: 1.05rem;
+		line-height: 1.65;
+		color: var(--muted);
+		max-width: 56ch;
+	}
+
+	.q.open .a {
+		grid-template-rows: 1fr;
+	}
+
+	.q.open .a > div {
+		visibility: visible;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.a,
+		.a > div,
+		.ico::before,
+		.ico::after,
+		.btn {
+			transition: none;
+		}
+	}
+</style>
