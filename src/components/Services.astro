@@ -144,7 +144,7 @@
 		color: var(--text);
 	}
 
-	.win::before {
+.win::before {
 		content: '';
 		width: 8px;
 		height: 8px;
@@ -152,4 +152,20 @@
 		background: var(--dot);
 		flex: none;
 	}
+
+	@media (max-width: 480px) {
+		.wrap {
+			padding: 64px 24px;
+			gap: 32px;
+		}
+
+		.row {
+			padding: 24px 0;
+		}
+
+		.win {
+			margin-top: 16px;
+		}
+	}
+}
 </style>

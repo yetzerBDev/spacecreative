@@ -277,6 +277,30 @@ const projectTypes = [
 		color: var(--dot);
 	}
 
+	@media (max-width: 480px) {
+		.contact {
+			padding: 72px 0;
+		}
+
+		.form-card {
+			padding: 24px 20px;
+			margin-top: 36px;
+		}
+
+		.contact-title {
+			font-size: clamp(1.65rem, 1.25rem + 1vw, 2.25rem);
+		}
+
+		.submit {
+			font-size: 0.95rem;
+			padding: 15px 18px;
+		}
+
+		.form-note {
+			font-size: 0.8125rem;
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		.submit,
 		.field-input {

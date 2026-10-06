@@ -34,7 +34,7 @@ const clients = [
 		background: #f4f7ff;
 		border-top: 1px solid rgba(10, 42, 102, 0.14);
 		border-bottom: 1px solid rgba(10, 42, 102, 0.14);
-		padding: 40px 0;
+		padding: 36px 0;
 	}
 
 	@media (min-width: 640px) {
@@ -59,8 +59,14 @@ const clients = [
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		gap: 48px 72px;
+		gap: 32px;
 		padding: 0 24px;
+	}
+
+	@media (min-width: 640px) {
+		.logo-row {
+			gap: 48px 72px;
+		}
 	}
 
 	.logo-item {
@@ -79,7 +85,7 @@ const clients = [
 	}
 
 	.logo-item :global(img) {
-		height: 40px;
+		height: 34px;
 		width: auto;
 		display: block;
 	}
@@ -87,6 +93,19 @@ const clients = [
 	@media (min-width: 640px) {
 		.logo-item :global(img) {
 			height: 48px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.logo-strip-label {
+			margin-bottom: 22px;
+			font-size: 0.875rem;
+			line-height: 1.5;
+			max-width: 22rem;
+		}
+
+		.logo-row {
+			gap: 28px 20px;
 		}
 	}
 </style>
