@@ -1,0 +1,143 @@
+<section class="why-us" id="nosotros">
+	<div class="wrap">
+		<header class="head">
+			<h2>¿Por qué elegir Space Creative?</h2>
+			<p>Sabes qué recibes, cuándo y con qué resultados.</p>
+		</header>
+
+		<div class="grid">
+			<article class="item">
+				<h3>Cero tecnicismos</h3>
+				<p>Comunicación clara, en tu propio idioma y sin palabras confusas desde el primer día.</p>
+				<span class="win">Claridad absoluta</span>
+			</article>
+
+			<article class="item">
+				<h3>Pago contra avance</h3>
+				<p>Hitos verificables: solo desembolsas fondos a medida que ves avances concretos y aprobados.</p>
+				<span class="win">Cero riesgo</span>
+			</article>
+
+			<article class="item">
+				<h3>Enfoque comercial</h3>
+				<p>Diseños pensados para vender, convertir y captar prospectos calificados, no solo para verse bonitos.</p>
+				<span class="win">Retorno medible</span>
+			</article>
+
+			<article class="item">
+				<h3>Trato directo y cercano</h3>
+				<p>Hablas con quienes desarrollan tu proyecto y recibes respuesta ágil en horario comercial.</p>
+				<span class="win">Sin intermediarios</span>
+			</article>
+		</div>
+	</div>
+</section>
+
+<style>
+	.why-us {
+		--text: #0a2a66;
+		--muted: #4a5a8c;
+		--line: rgba(10, 42, 102, 0.14);
+		--dot: #2bd576;
+
+		background: #ffffff;
+		color: var(--text);
+		font-family: 'DM Sans', system-ui, sans-serif;
+		padding: 72px 0 96px;
+	}
+
+	@media (min-width: 641px) {
+		.why-us {
+			padding: 112px 0;
+		}
+	}
+
+	.wrap {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: 0 24px;
+	}
+
+	.head {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 40px 56px;
+		flex-wrap: wrap;
+		margin-bottom: 64px;
+	}
+
+	@media (min-width: 641px) {
+		.head {
+			margin-bottom: 72px;
+		}
+	}
+
+	h2 {
+		font: 600 clamp(2rem, 4vw, 3.4rem)/1.04 'Sora', sans-serif;
+		letter-spacing: -0.04em;
+		margin: 0;
+		max-width: 13ch;
+		color: var(--text);
+	}
+
+	.head p {
+		font-size: 1.1rem;
+		line-height: 1.55;
+		color: var(--muted);
+		margin: 0;
+		max-width: 28ch;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 44px;
+	}
+
+	@media (min-width: 761px) {
+		.grid {
+			grid-template-columns: 1fr 1fr;
+			gap: 56px 72px;
+		}
+	}
+
+	.item {
+		border-top: 1px solid var(--line);
+		padding-top: 28px;
+	}
+
+	h3 {
+		font: 600 1.5rem/1.15 'Sora', sans-serif;
+		letter-spacing: -0.025em;
+		margin: 0;
+		color: var(--text);
+	}
+
+	.item p {
+		margin: 14px 0 0;
+		font-size: 1.05rem;
+		line-height: 1.6;
+		color: var(--muted);
+		max-width: 42ch;
+	}
+
+	.win {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-top: 20px;
+		font-weight: 500;
+		font-size: 0.95rem;
+		color: var(--text);
+	}
+
+	.win::before {
+		content: '';
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--dot);
+		flex: none;
+	}
+</style>
