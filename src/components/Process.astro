@@ -17,29 +17,33 @@
 		</div>
 
 		<div class="steps" data-reveal>
-			<article class="step">
-				<div class="n">01</div>
-				<h3>Definición y alcance</h3>
-				<div class="pay">Anticipo del 50%</div>
-				<p>Analizamos tus objetivos comerciales y fijamos por escrito entregables, tiempos y presupuesto exacto.</p>
-				<span class="win">Alcance cerrado por escrito</span>
-			</article>
+			<div class="num">
+				<span class="n">01</span>
+				<span class="n">02</span>
+				<span class="n">03</span>
+			</div>
+			<div class="texts">
+				<article class="step">
+					<h3>Definición y alcance</h3>
+					<div class="pay">Anticipo del 50%</div>
+					<p>Analizamos tus objetivos comerciales y fijamos por escrito entregables, tiempos y presupuesto exacto.</p>
+					<span class="win">Alcance cerrado por escrito</span>
+				</article>
 
-			<article class="step">
-				<div class="n">02</div>
-				<h3>Prototipo navegable</h3>
-				<div class="pay">Validación del 30%</div>
-				<p>Ves y pruebas cómo funciona tu sitio o sistema en pantalla antes de programar la versión final.</p>
-				<span class="win">Pruebas y apruebas cada avance</span>
-			</article>
+				<article class="step">
+					<h3>Prototipo navegable</h3>
+					<div class="pay">Validación del 30%</div>
+					<p>Ves y pruebas cómo funciona tu sitio o sistema en pantalla antes de programar la versión final.</p>
+					<span class="win">Pruebas y apruebas cada avance</span>
+				</article>
 
-			<article class="step">
-				<div class="n">03</div>
-				<h3>Lanzamiento y soporte</h3>
-				<div class="pay">Entrega del 20%</div>
-				<p>Publicamos tu solución, configuramos la seguridad y te capacitamos para operarla de forma autónoma.</p>
-				<span class="win">Garantía y soporte incluidos</span>
-			</article>
+				<article class="step">
+					<h3>Lanzamiento y soporte</h3>
+					<div class="pay">Entrega del 20%</div>
+					<p>Publicamos tu solución, configuramos la seguridad y te capacitamos para operarla de forma autónoma.</p>
+					<span class="win">Garantía y soporte incluidos</span>
+				</article>
+			</div>
 		</div>
 	</div>
 </section>
@@ -172,30 +176,61 @@
 	}
 
 	.steps {
+		margin-top: 56px;
+	}
+
+	.num {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.num::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 12px;
+		right: 12px;
+		height: 1px;
+		transform: translateY(-50%);
+		background: var(--line);
+	}
+
+	.n {
+		position: relative;
+		z-index: 1;
+		justify-self: center;
+		padding: 0 16px;
+		background: #f4f7ff;
+		font: 600 1rem/1 'Sora', sans-serif;
+		letter-spacing: 0.1em;
+		color: var(--muted);
+	}
+
+	.texts {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 30px 40px;
-		margin-top: 48px;
+		margin-top: 36px;
 	}
 
 	@media (min-width: 480px) {
-		.steps {
+		.texts {
 			grid-template-columns: 1fr 1fr;
 		}
 
-		.step:last-child {
+		.texts .step:last-child {
 			grid-column: 1 / -1;
 		}
 	}
 
 	@media (min-width: 641px) {
-		.steps {
+		.texts {
 			grid-template-columns: repeat(3, 1fr);
 			gap: 0 56px;
-			align-items: start;
 		}
 
-		.step:last-child {
+		.texts .step:last-child {
 			grid-column: auto;
 		}
 	}
@@ -203,11 +238,8 @@
 	.step {
 		display: flex;
 		flex-direction: column;
-	}
-
-	.n {
-		font: 500 0.9rem 'Sora', sans-serif;
-		color: var(--muted);
+		align-items: center;
+		text-align: center;
 	}
 
 	h3 {
@@ -278,7 +310,7 @@
 			font-size: 1.1rem;
 		}
 
-		.steps {
+		.texts {
 			gap: 26px;
 		}
 
