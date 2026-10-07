@@ -149,20 +149,37 @@
 	}
 
 	@media (max-width: 640px) {
+		.bento {
+			gap: 8px;
+		}
+
 		.tile {
-			padding: 20px;
+			padding: 14px;
 		}
 
 		.tile h3 {
-			font-size: 1.2rem;
+			font-size: 0.98rem;
 		}
 
 		.tile-lg h3 {
-			font-size: 1.45rem;
+			font-size: 1.15rem;
 		}
 
 		.tile p {
-			font-size: 0.94rem;
+			margin-top: 6px;
+			font-size: 0.84rem;
+			line-height: 1.45;
+		}
+
+		.tile .win {
+			margin-top: 8px;
+			gap: 6px;
+			font-size: 0.78rem;
+		}
+
+		.tile .win::before {
+			width: 5px;
+			height: 5px;
 		}
 	}
 </style>
